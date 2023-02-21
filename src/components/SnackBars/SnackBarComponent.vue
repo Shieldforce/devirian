@@ -21,7 +21,7 @@ export default {
   },
   data() {
     return {
-      snackbar: false,
+      snackbar: true,
       text: `Not Text`,
     };
   },
