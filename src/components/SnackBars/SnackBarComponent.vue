@@ -1,9 +1,19 @@
 <template>
   <div class="text-center ma-2">
-    <v-snackbar v-model="snackbar">
+    <v-snackbar
+      v-model="snackbar"
+      :color="color"
+      top
+      app
+    >
       {{ text }}
       <template v-slot:action="{ attrs }">
-        <v-btn color="pink" text v-bind="attrs" @click="snackbar = false">
+        <v-btn
+          color="pink"
+          text
+          v-bind="attrs"
+          @click="snackbar = false"
+        >
           Close
         </v-btn>
       </template>
@@ -14,21 +24,21 @@
 <script>
 export default {
   name: "SnackBarComponent",
-  props: {
-    showBar: {
-      require: true,
-    },
-  },
   data() {
     return {
-      snackbar: true,
+      snackbar: false,
+      color: "rgba(0,0,0,0.5)",
       text: `Not Text`,
     };
   },
-  watch: {
-    showBar(value) {
-      this.snackbar = value;
-    },
+  created() {
+    this.$store.subscribe((mutation, state) => {
+      if (mutation.type === "global/GLOBAL/SET_SNACKBAR") {
+        this.snackbar = state.global.snackBarConfig.show;
+        this.color = state.global.snackBarConfig.color;
+        this.text = state.global.snackBarConfig.text;
+      }
+    });
   },
 };
 </script>

@@ -1,7 +1,11 @@
 <template>
   <div style="background-image: url('/img/background.jpg')">
     <v-container>
-      <v-row justify="center" align="center" style="height: 100vh">
+      <v-row
+        justify="center"
+        align="center"
+        style="height: 100vh"
+      >
         <v-col
           cols="10"
           md="6"
@@ -30,7 +34,11 @@
           >
             Email enviado!
           </h3>
-          <v-form ref="form" v-model="valid" lazy-validation>
+          <v-form
+            ref="form"
+            v-model="valid"
+            lazy-validation
+          >
             <v-text-field
               @keydown.stop="resetValidation"
               type="text"
@@ -80,7 +88,12 @@
             ></v-text-field>
 
             <v-row>
-              <v-col cols="4" md="4" sm="4" xl="2">
+              <v-col
+                cols="4"
+                md="4"
+                sm="4"
+                xl="2"
+              >
                 <v-switch
                   v-model="register"
                   @change="changeAction($event)"
@@ -88,7 +101,12 @@
                 ></v-switch>
               </v-col>
 
-              <v-col cols="4" md="6" sm="4" xl="4">
+              <v-col
+                cols="4"
+                md="6"
+                sm="4"
+                xl="4"
+              >
                 <v-switch
                   v-model="resetPassword"
                   @change="changeActionResetPassword($event)"

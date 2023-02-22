@@ -1,8 +1,11 @@
 <template>
   <div style="background-image: url('/img/background.jpg')">
-    <SnackBarComponent :showBar="showBar"/>
     <v-container>
-      <v-row justify="center" align="center" style="height: 100vh">
+      <v-row
+        justify="center"
+        align="center"
+        style="height: 100vh"
+      >
         <v-col
           cols="10"
           md="6"
@@ -18,7 +21,11 @@
             Bem vindo a Devirian
             <span :style="`color:green;`">(Escolha sua nova senha!)</span>
           </h3>
-          <v-form ref="form" v-model="valid" lazy-validation>
+          <v-form
+            ref="form"
+            v-model="valid"
+            lazy-validation
+          >
             <v-text-field
               @keydown.stop="resetValidation"
               type="password"
@@ -60,15 +67,10 @@
 
 <script>
 import { mapActions } from "vuex";
-import SnackBarComponent from "@/components/SnackBars/SnackBarComponent.vue";
 
 export default {
-  components: {
-    SnackBarComponent,
-  },
   name: "ResetPasswordView",
   data: () => ({
-    showBar: true,
     resetPassword: false,
     valid: true,
     form: {
@@ -76,7 +78,6 @@ export default {
       password: null,
       password_confirmation: null,
     },
-
     validation: {
       frontend: {
         password: [(v) => !!v || "Senha é obrigatório"],
@@ -95,17 +96,23 @@ export default {
   },
   methods: {
     ...mapActions("auth", ["ActionSetUser", "ActionResetPassword"]),
+    ...mapActions("global", ["ActionSetSnackbar"]),
     accessAction() {
       if (this.$refs.form.validate()) {
         this.form.token = this.$router.currentRoute.params.token;
         this.ActionResetPassword(this.form)
           .then((res) => {
-            console.log(res);
             localStorage.setItem("token", res.data.access_token);
             this.ActionSetUser(res.data.user);
             window.location.href = "/dashboard";
           })
           .catch((err) => {
+            this.ActionSetSnackbar({
+              reset: false,
+              show: true,
+              color: "rgba(255,0,0,0.5)",
+              text: err.response.data.message,
+            });
             if (err.response.status === 422) {
               Object.keys(err.response.data.errors).forEach((index) => {
                 this.validation.backend[index] =

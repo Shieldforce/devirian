@@ -1,0 +1,9 @@
+{
+  "singleQuote": false,
+  "singleAttributePerLine": true,
+  "printWidth": 80,
+  "trailingComma": "all",
+  "tabWidth": 2,
+  "bracketSameLine": false,
+  "htmlWhitespaceSensitivity": "css"
+}

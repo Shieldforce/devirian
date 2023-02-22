@@ -1,21 +1,24 @@
 const routes = [
   {
-    path: '/access',
-    name: 'access',
+    path: "/access",
+    name: "access",
     meta: {
-      scope: "public"
+      scope: "public",
     },
-    component: () => import(/* webpackChunkName: "access" */ '@/views/Auth/AccessView.vue')
+    component: () =>
+      import(/* webpackChunkName: "access" */ "@/views/Auth/AccessView.vue"),
   },
   {
-    path: '/resetPassword/:token',
-    name: 'resetPassword',
+    path: "/resetPassword/:token",
+    name: "resetPassword",
     meta: {
-      scope: "public"
+      scope: "public",
     },
-    component: () => import(/* webpackChunkName: "resetPassword" */ '@/views/Auth/ResetPasswordView.vue')
+    component: () =>
+      import(
+        /* webpackChunkName: "resetPassword" */ "@/views/Auth/ResetPasswordView.vue"
+      ),
   },
-]
+];
 
 export default routes;
-

@@ -1,5 +1,3 @@
 //import * as types from "./mutation-types";
 
-export default {
-
-}
+export default {};

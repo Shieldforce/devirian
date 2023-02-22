@@ -1,13 +1,15 @@
 const routes = [
   {
-    path: '/',
-    name: 'externalIndex',
+    path: "/",
+    name: "externalIndex",
     meta: {
-      scope: "public"
+      scope: "public",
     },
-    component: () => import(/* webpackChunkName: "externalIndex" */ '@/views/External/IndexView.vue')
+    component: () =>
+      import(
+        /* webpackChunkName: "externalIndex" */ "@/views/External/IndexView.vue"
+      ),
   },
-]
+];
 
 export default routes;
-  

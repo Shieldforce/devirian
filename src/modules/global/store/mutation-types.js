@@ -1,0 +1,1 @@
+export const SET_SNACKBAR = "GLOBAL/SET_SNACKBAR";

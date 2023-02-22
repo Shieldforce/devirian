@@ -1,13 +1,15 @@
 const routes = [
   {
-    path: '/dashboard',
-    name: 'dashboard',
+    path: "/dashboard",
+    name: "dashboard",
     meta: {
-      scope: "private"
+      scope: "private",
     },
-    component: () => import(/* webpackChunkName: "externalIndex" */ '@/views/Panel/DashboardView.vue')
+    component: () =>
+      import(
+        /* webpackChunkName: "externalIndex" */ "@/views/Panel/DashboardView.vue"
+      ),
   },
-]
+];
 
 export default routes;
-  
