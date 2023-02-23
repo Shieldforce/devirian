@@ -5,8 +5,8 @@
   >
     <v-list-item>
       <v-list-item-content>
-        <v-list-item-title class="text-h6"> Application </v-list-item-title>
-        <v-list-item-subtitle> subtext </v-list-item-subtitle>
+        <v-list-item-title class="text-h6"> Devirian </v-list-item-title>
+        <v-list-item-subtitle> O mundo dos Dev's </v-list-item-subtitle>
       </v-list-item-content>
     </v-list-item>
 
@@ -20,6 +20,7 @@
         v-for="item in items"
         :key="item.title"
         link
+        :to="item.to"
       >
         <v-list-item-icon>
           <v-icon>{{ item.icon }}</v-icon>
@@ -38,16 +39,17 @@ export default {
   props: {
     actionDrawer: {
       required: true,
-      default: false,
+      default: true,
     },
   },
   data: () => ({
-    drawer: false,
+    drawer: true,
     items: [
-      { title: "Dashboard", icon: "mdi-view-dashboard" },
-      { title: "Photos", icon: "mdi-image" },
-      { title: "About", icon: "mdi-help-box" },
+      { title: "Dashboard", icon: "mdi-view-dashboard", to: "/dashboard" },
+      { title: "Lista de Tarefas", icon: "mdi-list-status", to: "/tasks" },
+      { title: "Sobre", icon: "mdi-information-outline", to: "/about" },
     ],
+    right: null,
   }),
   watch: {
     actionDrawer(newValue) {
