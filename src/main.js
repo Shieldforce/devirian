@@ -5,8 +5,11 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import "./assets/scss/app.scss";
+import Lottie from "vue-lottie";
 
 Vue.config.productionTip = false;
+
+Vue.component("lottie-component", Lottie);
 
 router.beforeEach((to, from, next) => {
   if (window.location.href.includes("resetPassword")) {

@@ -7,7 +7,7 @@ const routes = [
     },
     component: () =>
       import(
-        /* webpackChunkName: "externalIndex" */ "@/views/External/IndexView.vue"
+        /* webpackChunkName: "externalIndex" */ "@/modules/external/views/IndexView.vue"
       ),
   },
 ];

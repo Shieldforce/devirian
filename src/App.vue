@@ -20,8 +20,8 @@
 
 <script>
 import SnackBarComponent from "@/components/SnackBars/SnackBarComponent.vue";
-import NavegationDrawerComponent from "./components/Template/Panel/NavegationDrawerComponent.vue";
-import AppBarComponent from "./components/Template/Panel/AppBarComponent.vue";
+import NavegationDrawerComponent from "./modules/panel/components/Template/NavegationDrawerComponent.vue";
+import AppBarComponent from "./modules/panel/components/Template/AppBarComponent.vue";
 
 export default {
   components: {
@@ -50,5 +50,8 @@ export default {
 <style lang="css">
 .container {
   padding: 0 20% 0 10%;
+}
+.container-10 {
+  padding: 10px 10px 10px 10px;
 }
 </style>

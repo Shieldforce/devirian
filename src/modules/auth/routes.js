@@ -6,7 +6,9 @@ const routes = [
       scope: "public",
     },
     component: () =>
-      import(/* webpackChunkName: "access" */ "@/views/Auth/AccessView.vue"),
+      import(
+        /* webpackChunkName: "access" */ "@/modules/auth/views/AccessView.vue"
+      ),
   },
   {
     path: "/resetPassword/:token",
@@ -16,7 +18,7 @@ const routes = [
     },
     component: () =>
       import(
-        /* webpackChunkName: "resetPassword" */ "@/views/Auth/ResetPasswordView.vue"
+        /* webpackChunkName: "resetPassword" */ "@/modules/auth/views/ResetPasswordView.vue"
       ),
   },
 ];
