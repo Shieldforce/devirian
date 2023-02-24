@@ -3,7 +3,7 @@ const routes = [
     path: "/",
     name: "externalIndex",
     meta: {
-      scope: "public",
+      scope: "private",
     },
     component: () =>
       import(

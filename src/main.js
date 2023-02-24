@@ -17,6 +17,10 @@ router.beforeEach((to, from, next) => {
     return;
   }
 
+  if (to.path === "/") {
+    window.location.href = "/dashboard";
+  }
+
   if (
     localStorage.getItem("token") &&
     localStorage.getItem("token") !== "undefined" &&
