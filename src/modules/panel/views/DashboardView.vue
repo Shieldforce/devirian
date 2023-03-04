@@ -10,20 +10,20 @@
           md="4"
           sm="4"
           xl="4"
-          ><v-card
+          >
+          <v-alert
+            color="rgba(255, 0, 0, 0.3)"
+            dark
+            icon="mdi-heart-pulse"
+            border="left"
+            prominent
             height="200"
-            color="rgba(0, 0, 0, 0.3)"
-            style="
-              text-align: center;
-              color: white;
-              padding: 10px 10px 10px 10px;
-            "
-            >Pontuação da semana!
-            <SeaWalkAnimateComponent
-              :changeWidth="seaWalk.width"
-              :changeHeight="seaWalk.height"
-            />
-          </v-card>
+          >
+            Olá, meu nome é "Sr. coelho", sou um mestre jedi, estou a procura de minha paz interior.
+            Mas nas horas vagas sou programador, e tenho que finalizar minhas metas e tarefas, então,
+            por favor me ajuda com isso, quanto mais tarefas acumuladas, mais difícil fica de me concretar e 
+            meditar!
+          </v-alert>
           <RabbitAnimateComponent
         /></v-col>
         <v-col
@@ -36,6 +36,8 @@
             :changeDesserts="datatable.desserts"
             :changeTableTitle="datatable.title"
             :changeSearch="datatable.search"
+            @edit="buttonEdit"
+            @deleted="buttonDeleted"
         /></v-col>
       </v-row>
     </MainDashboardImg>
@@ -43,17 +45,15 @@
 </template>
 
 <script>
-import RabbitAnimateComponent from "@/modules/global/components/RabbitAnimateComponent";
-import SeaWalkAnimateComponent from "@/modules/global/components/SeaWalkAnimateComponent";
-import DataTableComponent from "@/modules/global/components/DataTableComponent";
+import RabbitAnimateComponent from "@/modules/global/components/RabbitAnimateComponent.vue";
+import DataTableComponent from "@/modules/global/components/DataTableComponent.vue";
 import MainDashboardImg from "@/modules/global/components/MainDashboardImg.vue";
-import ApiTasks from "@/modules/auth/http/apiTasks/index";
+import ApiTasks from "@/modules/auth/http/apiTasks/index.js";
 
 export default {
   name: "DashboardView",
   components: {
     RabbitAnimateComponent,
-    SeaWalkAnimateComponent,
     DataTableComponent,
     MainDashboardImg,
   },
@@ -86,14 +86,11 @@ export default {
   methods: {
     getHeaderDataTable() {
       this.datatable.headers = [
-        {
-          text: "#",
-          align: "start",
-          sortable: false,
-          value: "id",
-        },
         { text: "Título", value: "titulo" },
         { text: "Descrição", value: "descricao" },
+        { text: "Ações", value: "actions" },
+        { text: '', value: 'deleted' },
+        { text: '', value: 'edit' },
       ];
     },
     getDataTableResults() {
@@ -105,6 +102,19 @@ export default {
           console.log(error);
         });
     },
+    buttonEdit(item) {
+      console.log(item, "edit");
+    },
+    buttonDeleted(item) {
+      ApiTasks.delete(`/meta/${item.id}`)
+        .then((response) => {
+          this.getDataTableResults();
+          console.log(response);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    }
   },
 };
 </script>

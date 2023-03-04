@@ -1,6 +1,5 @@
 <template>
   <div>
-    <SnackBarComponent />
     <div v-if="accessRoute">
       <v-app id="inspire">
         <router-view :key="$router.fullPath"></router-view>
@@ -15,17 +14,21 @@
         </v-main>
       </v-app>
     </div>
+    <SnackBarComponent />
+    <ModalConfirm />
   </div>
 </template>
 
 <script>
 import SnackBarComponent from "@/components/SnackBars/SnackBarComponent.vue";
+import ModalConfirm from "@/components/Modals/ModalConfirm.vue";
 import NavegationDrawerComponent from "./modules/panel/components/Template/NavegationDrawerComponent.vue";
 import AppBarComponent from "./modules/panel/components/Template/AppBarComponent.vue";
 
 export default {
   components: {
     SnackBarComponent,
+    ModalConfirm,
     NavegationDrawerComponent,
     AppBarComponent,
   },
