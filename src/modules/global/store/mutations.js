@@ -10,4 +10,11 @@ export default {
   [types.SET_MODAL_CONFIRM_ACCEPTED](state, payload) {
     state.modalConfirmConfig.accept = payload;
   },
+  [types.SET_MODAL_CREATE_UPDATE](state, payload) {
+    state.modalCreateUpdateConfig = payload;
+  },
+  [types.SET_MODAL_SUBMIT_FORM](state, payload) {
+    console.log(payload);
+    state.dataForm = payload;
+  },
 };

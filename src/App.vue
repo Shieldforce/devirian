@@ -16,6 +16,11 @@
     </div>
     <SnackBarComponent />
     <ModalConfirm />
+    <CreateUpdateModal>
+      <template v-slot:form="{ selectionTemplate }" >
+        <FormCreateUpdate :selectionTemplate="selectionTemplate"/>
+      </template>
+    </CreateUpdateModal>
   </div>
 </template>
 
@@ -24,6 +29,8 @@ import SnackBarComponent from "@/components/SnackBars/SnackBarComponent.vue";
 import ModalConfirm from "@/components/Modals/ModalConfirm.vue";
 import NavegationDrawerComponent from "./modules/panel/components/Template/NavegationDrawerComponent.vue";
 import AppBarComponent from "./modules/panel/components/Template/AppBarComponent.vue";
+import CreateUpdateModal from "@/components/Modals/CreateUpdateModal.vue";
+import FormCreateUpdate from "@/modules/global/components/FormCreateUpdate.vue";
 
 export default {
   components: {
@@ -31,6 +38,8 @@ export default {
     ModalConfirm,
     NavegationDrawerComponent,
     AppBarComponent,
+    CreateUpdateModal,
+    FormCreateUpdate,
   },
   data: () => ({
     drawer: true,

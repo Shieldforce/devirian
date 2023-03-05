@@ -15,7 +15,7 @@
 
     <v-app-bar-nav-icon @click="changeDrawer"></v-app-bar-nav-icon>
 
-    <v-app-bar-title>Devirian - (DASHBOARD)</v-app-bar-title>
+    <v-app-bar-title>Devirian</v-app-bar-title>
 
     <v-spacer></v-spacer>
 

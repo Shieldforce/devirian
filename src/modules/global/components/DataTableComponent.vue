@@ -1,7 +1,15 @@
 <template>
   <v-card :color="color">
     <v-card-title style="color: white">
-      {{ tableTitle }}
+      <v-btn
+        class="mx-2"
+        icon
+        @click="created()"
+        color="white"
+      >
+        <v-icon dark>mdi-plus-circle</v-icon>
+      </v-btn>
+      | {{ tableTitle }} |
       <v-spacer></v-spacer>
       <v-text-field
         v-model="search"
@@ -23,12 +31,23 @@
       item-key="id"
       show-select
     >
-      <template slot="item.actions" slot-scope="props">
-        <v-btn class="mx-2" icon @click="($event) => edit(props.item)">
-            <v-icon dark>mdi-pencil</v-icon>
+      <template
+        slot="item.actions"
+        slot-scope="props"
+      >
+        <v-btn
+          class="mx-2"
+          icon
+          @click="($event) => edit(props.item)"
+        >
+          <v-icon dark>mdi-pencil</v-icon>
         </v-btn>
-        <v-btn class="mx-2" icon @click="($event) => deleted(props.item)">
-            <v-icon dark>mdi-delete</v-icon>
+        <v-btn
+          class="mx-2"
+          icon
+          @click="($event) => deleted(props.item)"
+        >
+          <v-icon dark>mdi-delete</v-icon>
         </v-btn>
       </template>
     </v-data-table>
@@ -61,6 +80,14 @@ export default {
       type: String,
       required: false,
     },
+    changeFormTitle: {
+      type: String,
+      required: false,
+    },
+    changeFormTemplate: {
+      type: String,
+      required: false,
+    },
   },
   data() {
     return {
@@ -73,6 +100,8 @@ export default {
       tableTitle: "Title Table",
       headers: [],
       desserts: [],
+      formTitle: "",
+      formTemplate: "",
     };
   },
   created() {},
@@ -92,9 +121,25 @@ export default {
     changeDesserts(newValue) {
       this.desserts = newValue;
     },
+    changeFormTitle(newValue) {
+      this.formTitle = newValue;
+    },
+    changeFormTemplate(newValue) {
+      this.formTemplate = newValue;
+    },
   },
   methods: {
-    ...mapActions("global", ["ActionSetModalConfirm"]),
+    ...mapActions("global", [
+      "ActionSetModalConfirm",
+      "ActionSetModalCreateUpdate",
+    ]),
+    created() {
+      this.ActionSetModalCreateUpdate({
+        dialog: true,
+        title:  this.formTitle,
+        selectionTemplate: this.formTemplate,
+      });
+    },
     deleted(item) {
       this.modalDeleteConfirm(item);
     },
@@ -105,19 +150,20 @@ export default {
       this.ActionSetModalConfirm({
         dialog: true,
         title: "Confirmação!",
-        message: "Deseja realmente excluir este item, esta ação fará com que todos os dados desse item seja perdido!?",
+        message:
+          "Deseja realmente excluir este item, esta ação fará com que todos os dados desse item seja perdido!?",
       });
       this.$store.subscribe((mutation, state) => {
         if (
           mutation.type === "global/GLOBAL/SET_MODAL_CONFIRM_ACCEPTED" &&
           state.global.modalConfirmConfig.accept
-          ) {
+        ) {
           this.$emit("deleted", item);
         }
         if (
           mutation.type === "global/GLOBAL/SET_MODAL_CONFIRM_ACCEPTED" &&
           !state.global.modalConfirmConfig.accept
-          ) {
+        ) {
           console.log("não");
         }
       });

@@ -37,13 +37,13 @@ import { mapActions } from "vuex";
 
 export default {
   name: "ModalConfirmVue",
-  data () {
+  data() {
     return {
       dialog: false,
       accept: false,
       title: "Confirm!",
-      message: "Text modal confirmation!"
-    }
+      message: "Text modal confirmation!",
+    };
   },
   created() {
     this.$store.subscribe((mutation, state) => {
@@ -57,9 +57,9 @@ export default {
   methods: {
     ...mapActions("global", ["ActionSetModalConfirmAccept"]),
     actionAccept(accept) {
-        this.ActionSetModalConfirmAccept(accept);
-        this.dialog = false;
+      this.ActionSetModalConfirmAccept(accept);
+      this.dialog = false;
     },
-  }
-}
+  },
+};
 </script>

@@ -10,19 +10,20 @@
           md="4"
           sm="4"
           xl="4"
-          >
+        >
           <v-alert
-            color="rgba(255, 0, 0, 0.3)"
+            color="rgba(0, 0, 0, 0.3)"
             dark
             icon="mdi-heart-pulse"
             border="left"
             prominent
             height="200"
           >
-            Olá, meu nome é "Sr. coelho", sou um mestre jedi, estou a procura de minha paz interior.
-            Mas nas horas vagas sou programador, e tenho que finalizar minhas metas e tarefas, então,
-            por favor me ajuda com isso, quanto mais tarefas acumuladas, mais difícil fica de me concretar e 
-            meditar!
+            Olá, meu nome é "Sr. coelho", sou um mestre jedi, estou a procura de
+            minha paz interior. Mas nas horas vagas sou programador, e tenho que
+            finalizar minhas metas e tarefas, então, por favor me ajuda com
+            isso, quanto mais tarefas acumuladas, mais difícil fica a minha
+            concentração e meditação!
           </v-alert>
           <RabbitAnimateComponent
         /></v-col>
@@ -36,6 +37,8 @@
             :changeDesserts="datatable.desserts"
             :changeTableTitle="datatable.title"
             :changeSearch="datatable.search"
+            :changeFormTitle="datatable.formTitle"
+            :changeFormTemplate="datatable.formTemplate"
             @edit="buttonEdit"
             @deleted="buttonDeleted"
         /></v-col>
@@ -68,6 +71,8 @@ export default {
         desserts: [],
         title: "",
         search: "",
+        formTitle: "",
+        formTemplate: "",
       },
       seaWalk: {
         width: null,
@@ -78,6 +83,8 @@ export default {
   mounted() {
     this.datatable.title =
       "Quando você define objetivos, sua vida começa a ter sentido.";
+    this.datatable.formTitle = "Cadastro de Metas";
+    this.datatable.formTemplate = "FormCreateUpdateMetas";
     this.getHeaderDataTable();
     this.getDataTableResults();
     this.seaWalk.width = "100";
@@ -89,8 +96,8 @@ export default {
         { text: "Título", value: "titulo" },
         { text: "Descrição", value: "descricao" },
         { text: "Ações", value: "actions" },
-        { text: '', value: 'deleted' },
-        { text: '', value: 'edit' },
+        { text: "", value: "deleted" },
+        { text: "", value: "edit" },
       ];
     },
     getDataTableResults() {
@@ -114,7 +121,7 @@ export default {
         .catch((error) => {
           console.log(error);
         });
-    }
+    },
   },
 };
 </script>
