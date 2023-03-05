@@ -69,7 +69,6 @@ export default {
       required: true,
     },
     changeDesserts: {
-      type: Array,
       required: true,
     },
     changeColor: {
@@ -129,16 +128,9 @@ export default {
     },
   },
   methods: {
-    ...mapActions("global", [
-      "ActionSetModalConfirm",
-      "ActionSetModalCreateUpdate",
-    ]),
+    ...mapActions("global", ["ActionSetModalConfirm"]),
     created() {
-      this.ActionSetModalCreateUpdate({
-        dialog: true,
-        title:  this.formTitle,
-        selectionTemplate: this.formTemplate,
-      });
+      this.$emit("created");
     },
     deleted(item) {
       this.modalDeleteConfirm(item);

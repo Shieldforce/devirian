@@ -1,48 +1,43 @@
 <v-card-text>
-  <v-container>
+  <div style="padding: 5%;">
     <v-row>
+      <v-text-field 
+      v-model="$store.state.global.dataForm.endpoint" 
+      required
+      :rules="[...form.validation.endpoint]"
+      hidden
+      style="display: none;"
+      ></v-text-field>
+      <v-text-field 
+      v-model="$store.state.global.dataForm.method" 
+      required
+      :rules="[...form.validation.method]"
+      hidden
+      style="display: none;"
+      ></v-text-field>
       <v-col
         cols="12"
-        sm="6"
-        md="4"
+        sm="12"
+        md="12"
       >
         <v-text-field
-          label="Legal first name*"
+          @keydown.stop="resetValidation('titulo')"
+          label="Título*"
+          v-model="$store.state.global.dataForm.titulo"
+          :rules="[...form.validation.titulo]"
           required
         ></v-text-field>
       </v-col>
       <v-col
         cols="12"
-        sm="6"
-        md="4"
+        sm="12"
+        md="12"
       >
         <v-text-field
-          label="Legal middle name"
-          hint="example of helper text only on focus"
-        ></v-text-field>
-      </v-col>
-      <v-col
-        cols="12"
-        sm="6"
-        md="4"
-      >
-        <v-text-field
-          label="Legal last name*"
-          hint="example of persistent helper text"
-          persistent-hint
-          required
-        ></v-text-field>
-      </v-col>
-      <v-col cols="12">
-        <v-text-field
-          label="Email*"
-          required
-        ></v-text-field>
-      </v-col>
-      <v-col cols="12">
-        <v-text-field
-          label="Password*"
-          type="password"
+          @keydown.stop="resetValidation('descricao')"
+          label="Descrição*"
+          v-model="$store.state.global.dataForm.descricao"
+          :rules="[...form.validation.descricao]"
           required
         ></v-text-field>
       </v-col>
@@ -51,8 +46,11 @@
         sm="6"
       >
         <v-select
-          :items="['0-17', '18-29', '30-54', '54+']"
-          label="Age*"
+          @change="resetValidation('prazo')"
+          :items="['curto', 'médio', 'longo']"
+          label="Prazo*"
+          v-model="$store.state.global.dataForm.prazo"
+          :rules="[...form.validation.prazo]"
           required
         ></v-select>
       </v-col>
@@ -60,13 +58,51 @@
         cols="12"
         sm="6"
       >
-        <v-autocomplete
-          :items="['Skiing', 'Ice hockey', 'Soccer', 'Basketball', 'Hockey', 'Reading', 'Writing', 'Coding', 'Basejump']"
-          label="Interests"
-          multiple
-        ></v-autocomplete>
+        <v-select
+          @change="resetValidation('aplicacao')"
+          :items="['profissional', 'pessoal']"
+          label="Aplicação*"
+          v-model="$store.state.global.dataForm.aplicacao"
+          :rules="[...form.validation.aplicacao]"
+          required
+        ></v-select>
+      </v-col>
+
+      <v-col
+        cols="12"
+        sm="12"
+        md="6"
+        class="mt-5"
+      >
+      <v-slider
+        style="padding: 0 0 0 0;margin: 0 0 0 0;"
+        :label="rangerImpacto.label"
+        :thumb-color="rangerImpacto.color"
+        thumb-label="always"
+        @change="resetValidation('impacto')"
+        v-model="$store.state.global.dataForm.impacto"
+        :rules="[...form.validation.impacto]"
+        required
+    ></v-slider>
+      </v-col>
+      <v-col
+        cols="12"
+        sm="12"
+        class="mt-5"
+        md="6"
+      >
+      <v-slider
+        style="padding: 0 0 0 0;margin: 0 0 0 0;"
+        :label="rangerConcluida.label"
+        :thumb-color="rangerConcluida.color"
+        thumb-label="always"
+        @change="resetValidation('concluida')"
+        v-model="$store.state.global.dataForm.concluida"
+        :rules="[...form.validation.concluida]"
+        required
+    ></v-slider>
       </v-col>
     </v-row>
-  </v-container>
-  <small>*indicates required field</small>
+  </div>
+  <small>Campos com * são obrigatórios!</small>
 </v-card-text>

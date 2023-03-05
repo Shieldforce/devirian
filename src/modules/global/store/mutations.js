@@ -13,8 +13,10 @@ export default {
   [types.SET_MODAL_CREATE_UPDATE](state, payload) {
     state.modalCreateUpdateConfig = payload;
   },
-  [types.SET_MODAL_SUBMIT_FORM](state, payload) {
-    console.log(payload);
+  [types.SET_MODAL_DATA_FORM](state, payload) {
     state.dataForm = payload;
+  },
+  [types.GET_METAS](state, payload) {
+    state.metas = payload;
   },
 };

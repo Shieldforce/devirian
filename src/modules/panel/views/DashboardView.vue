@@ -17,7 +17,7 @@
             icon="mdi-heart-pulse"
             border="left"
             prominent
-            height="200"
+            min-height="200"
           >
             Olá, meu nome é "Sr. coelho", sou um mestre jedi, estou a procura de
             minha paz interior. Mas nas horas vagas sou programador, e tenho que
@@ -34,11 +34,12 @@
           xl="8"
           ><DataTableComponent
             :changeHeaders="datatable.headers"
-            :changeDesserts="datatable.desserts"
+            :changeDesserts="this.getMetas()"
             :changeTableTitle="datatable.title"
             :changeSearch="datatable.search"
             :changeFormTitle="datatable.formTitle"
             :changeFormTemplate="datatable.formTemplate"
+            @created="buttonCreated"
             @edit="buttonEdit"
             @deleted="buttonDeleted"
         /></v-col>
@@ -52,6 +53,7 @@ import RabbitAnimateComponent from "@/modules/global/components/RabbitAnimateCom
 import DataTableComponent from "@/modules/global/components/DataTableComponent.vue";
 import MainDashboardImg from "@/modules/global/components/MainDashboardImg.vue";
 import ApiTasks from "@/modules/auth/http/apiTasks/index.js";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "DashboardView",
@@ -68,11 +70,8 @@ export default {
       },
       datatable: {
         headers: [],
-        desserts: [],
         title: "",
         search: "",
-        formTitle: "",
-        formTemplate: "",
       },
       seaWalk: {
         width: null,
@@ -83,14 +82,14 @@ export default {
   mounted() {
     this.datatable.title =
       "Quando você define objetivos, sua vida começa a ter sentido.";
-    this.datatable.formTitle = "Cadastro de Metas";
-    this.datatable.formTemplate = "FormCreateUpdateMetas";
     this.getHeaderDataTable();
     this.getDataTableResults();
     this.seaWalk.width = "100";
     this.seaWalk.height = "100";
   },
   methods: {
+    ...mapActions("global", ["ActionGetMetas", "ActionSetModalCreateUpdate", "ActionSetModalDataForm"]),
+    ...mapGetters("global", ['getMetas']),
     getHeaderDataTable() {
       this.datatable.headers = [
         { text: "Título", value: "titulo" },
@@ -101,16 +100,26 @@ export default {
       ];
     },
     getDataTableResults() {
-      ApiTasks.get("/meta", this.search)
-        .then((response) => {
-          this.datatable.desserts = response.data.data;
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+      this.ActionGetMetas();
+    },
+    buttonCreated() {
+      this.ActionSetModalDataForm({}); 
+      this.ActionSetModalCreateUpdate({
+        dialog: true,
+        title: "Cadastro de Metas",
+        selectionTemplate: "FormCreateUpdateMetas",
+      });
     },
     buttonEdit(item) {
-      console.log(item, "edit");
+      var formItem = item;
+      formItem.endpoint = "/meta";
+      formItem.method = "put";
+      this.ActionSetModalDataForm(formItem); 
+      this.ActionSetModalCreateUpdate({
+        dialog: true,
+        title: `Edição da Meta: ${item.titulo}`,
+        selectionTemplate: "FormCreateUpdateMetas",
+      });
     },
     buttonDeleted(item) {
       ApiTasks.delete(`/meta/${item.id}`)

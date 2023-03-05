@@ -1,6 +1,8 @@
 <template>
   <div>
-      <component :is="selectedComponent"></component>
+    <component 
+    :is="selectedComponent"
+    ></component>
   </div>
 </template>
 
@@ -9,21 +11,22 @@ import FormCreateUpdateMetas from "../../panel/views/Metas/FormCreateUpdateMetas
 
 export default {
   props: {
-    selectionTemplate : {
-      type : String,
-      default : "",
-      required : true
-    }
+    selectionTemplate: {
+      type: String,
+      default: "",
+      required: true,
+    },
   },
   name: "FormCreateUpdate",
   components: {
     FormCreateUpdateMetas,
   },
-  data: () => ({
-    
-  }),
+  data: () => ({}),
   created() {
-    this.selectedComponent = this.selectionTemplate
+    this.selectedComponent = this.selectionTemplate;
+  },
+  methods: {
+    
   },
 };
 </script>

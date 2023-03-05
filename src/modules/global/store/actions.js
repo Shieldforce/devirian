@@ -1,3 +1,4 @@
+import apiTasks from "../../auth/http/apiTasks/index";
 import * as types from "./mutation-types";
 
 export const ActionSetSnackbar = ({ commit }, payload) => {
@@ -17,5 +18,18 @@ export const ActionSetModalCreateUpdate = ({ commit }, payload) => {
 };
 
 export const ActionSetModalDataForm = ({ commit }, payload) => {
-  return commit(types.SET_MODAL_SUBMIT_FORM, payload);
+  commit(types.SET_MODAL_DATA_FORM, payload);
+};
+
+export const ActionSetDataFormSubmit = (context, payload) => {
+  return apiTasks[payload.method](payload.endpoint, payload);
+};
+
+export const ActionGetMetas = ({ commit }, payload) => {
+  apiTasks.get("/meta", payload).then((response) => {
+    commit(types.GET_METAS, response.data.data);
+  })
+  .catch((error) => {
+    console.log(error);
+  });
 };

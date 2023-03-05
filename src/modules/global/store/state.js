@@ -15,4 +15,5 @@ export default {
     selectionTemplate: "",
   },
   dataForm: {},
+  metas: {},
 };

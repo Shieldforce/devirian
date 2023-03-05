@@ -4,6 +4,7 @@
       v-model="snackbar"
       :color="color"
       top
+      right
       app
     >
       {{ text }}
@@ -14,7 +15,7 @@
           v-bind="attrs"
           @click="snackbar = false"
         >
-          Close
+          Fechar
         </v-btn>
       </template>
     </v-snackbar>

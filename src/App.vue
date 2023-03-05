@@ -16,9 +16,11 @@
     </div>
     <SnackBarComponent />
     <ModalConfirm />
-    <CreateUpdateModal>
-      <template v-slot:form="{ selectionTemplate }" >
-        <FormCreateUpdate :selectionTemplate="selectionTemplate"/>
+    <CreateUpdateModal :form="form">
+      <template v-slot:form="{ selectionTemplate }">
+        <FormCreateUpdate 
+          :selectionTemplate="selectionTemplate" 
+        />
       </template>
     </CreateUpdateModal>
   </div>
@@ -44,6 +46,7 @@ export default {
   data: () => ({
     drawer: true,
     accessRoute: false,
+    form: {},
   }),
   created() {
     let fullPath = window.location.pathname;
