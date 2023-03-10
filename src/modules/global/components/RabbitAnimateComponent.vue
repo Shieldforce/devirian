@@ -33,6 +33,11 @@ export default {
       default: true,
     },
     changeAnimationData: {},
+    changeSpeed: {
+     type: Number,
+      required: false,
+      default: 9,
+    },
   },
   data() {
     return {
@@ -67,6 +72,9 @@ export default {
     changeAnimationData(newValue) {
       this.defaultOptions.animationData = newValue;
     },
+    changeSpeed(newValue) {
+      this.defaultOptions.speed(newValue)
+    }
   },
 };
 </script>

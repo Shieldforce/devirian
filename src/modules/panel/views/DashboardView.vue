@@ -25,8 +25,8 @@
             isso, quanto mais tarefas acumuladas, mais difícil fica a minha
             concentração e meditação!
           </v-alert>
-          <RabbitAnimateComponent
-        /></v-col>
+          <RabbitAnimateComponent :changeSpeed="changeSpeed"/>
+        </v-col>
         <v-col
           cols="12"
           md="8"
@@ -64,6 +64,7 @@ export default {
   },
   data() {
     return {
+      changeSpeed: 10,
       mainDashImg: {
         src: "",
         height: "",
