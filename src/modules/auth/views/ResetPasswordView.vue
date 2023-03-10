@@ -1,10 +1,10 @@
 <template>
-  <div style="background-image: url('/img/background.jpg')">
-    <v-container>
+  <div style="background-image: url('/img/background.jpg');padding:0;margin:0;">
+    <v-container style=";padding:0;margin:0;">
       <v-row
         justify="center"
         align="center"
-        style="height: 100vh"
+        style="height: 100vh;padding:0;margin:0;"
       >
         <v-col
           cols="10"

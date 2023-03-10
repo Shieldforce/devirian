@@ -109,15 +109,15 @@ export default {
       }
     },
   },
-  watch:{
+  watch: {
     dialog() {
       var payload = this.$store.state.global.dataForm;
 
-      if(this.dialog === false && payload.method === "post") {
+      if (this.dialog === false && payload.method === "post") {
         this.$refs.form.reset();
       }
 
-      if(this.dialog === false) {
+      if (this.dialog === false) {
         this.$refs.form.resetValidation();
         this.ActionSetSnackbar({
           reset: false,
@@ -126,7 +126,7 @@ export default {
           text: "",
         });
       }
-    }
+    },
   },
 };
 </script>

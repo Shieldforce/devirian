@@ -25,7 +25,7 @@
             isso, quanto mais tarefas acumuladas, mais difícil fica a minha
             concentração e meditação!
           </v-alert>
-          <RabbitAnimateComponent :changeSpeed="changeSpeed"/>
+          <RabbitAnimateComponent :changeSpeed="changeSpeed" />
         </v-col>
         <v-col
           cols="12"
@@ -112,8 +112,8 @@ export default {
       var payload = {
         endpoint: `/meta/${item.id}`,
         method: "put",
-        form : item,
-        validation : {}
+        form: item,
+        validation: {},
       };
       this.ActionSetModalDataForm(payload);
       this.ActionSetModalCreateUpdate({

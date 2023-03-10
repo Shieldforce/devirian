@@ -45,7 +45,7 @@ export default {
   data: () => ({
     drawer: true,
     items: [
-      { title: "Dashboard", icon: "mdi-view-dashboard", to: "/dashboard" },
+      { title: "Dashboard/Metas", icon: "mdi-view-dashboard", to: "/dashboard" },
       { title: "Lista de Tarefas", icon: "mdi-list-status", to: "/tasks" },
       { title: "Sobre", icon: "mdi-information-outline", to: "/about" },
     ],

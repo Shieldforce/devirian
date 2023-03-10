@@ -28,8 +28,8 @@ export default {
       var payload = {
         endpoint: this.endpoint,
         method: this.method,
-        form : this.form,
-        validation : {}
+        form: this.form,
+        validation: {},
       };
       if (this.$store.state.global.dataForm.endpoint) {
         payload = this.$store.state.global.dataForm;
@@ -41,14 +41,14 @@ export default {
       var payload = {
         endpoint: this.$store.state.global.dataForm.endpoint,
         method: this.$store.state.global.dataForm.method,
-        form : this.$store.state.global.dataForm.form,
-        validation : this.$store.state.global.dataForm.validation
+        form: this.$store.state.global.dataForm.form,
+        validation: this.$store.state.global.dataForm.validation,
       };
       if (name) {
         payload.validation[name] = [];
       }
       this.ActionSetModalDataForm(payload);
     },
-  }
+  },
 };
 </script>
