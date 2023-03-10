@@ -22,14 +22,16 @@ export const ActionSetModalDataForm = ({ commit }, payload) => {
 };
 
 export const ActionSetDataFormSubmit = (context, payload) => {
-  return apiTasks[payload.method](payload.endpoint, payload);
+  return apiTasks[payload.method](payload.endpoint, payload.form);
 };
 
 export const ActionGetMetas = ({ commit }, payload) => {
-  apiTasks.get("/meta", payload).then((response) => {
-    commit(types.GET_METAS, response.data.data);
-  })
-  .catch((error) => {
-    console.log(error);
-  });
+  apiTasks
+    .get("/meta", payload)
+    .then((response) => {
+      commit(types.GET_METAS, response.data.data);
+    })
+    .catch((error) => {
+      console.log(error);
+    });
 };

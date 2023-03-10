@@ -1,8 +1,6 @@
 <template>
   <div>
-    <component 
-    :is="selectedComponent"
-    ></component>
+    <component :is="selectedComponent"></component>
   </div>
 </template>
 
@@ -25,8 +23,6 @@ export default {
   created() {
     this.selectedComponent = this.selectionTemplate;
   },
-  methods: {
-    
-  },
+  methods: {},
 };
 </script>

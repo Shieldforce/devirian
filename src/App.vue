@@ -18,9 +18,7 @@
     <ModalConfirm />
     <CreateUpdateModal :form="form">
       <template v-slot:form="{ selectionTemplate }">
-        <FormCreateUpdate 
-          :selectionTemplate="selectionTemplate" 
-        />
+        <FormCreateUpdate :selectionTemplate="selectionTemplate" />
       </template>
     </CreateUpdateModal>
   </div>

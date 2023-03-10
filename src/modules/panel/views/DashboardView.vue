@@ -73,10 +73,6 @@ export default {
         title: "",
         search: "",
       },
-      seaWalk: {
-        width: null,
-        height: null,
-      },
     };
   },
   mounted() {
@@ -84,12 +80,14 @@ export default {
       "Quando você define objetivos, sua vida começa a ter sentido.";
     this.getHeaderDataTable();
     this.getDataTableResults();
-    this.seaWalk.width = "100";
-    this.seaWalk.height = "100";
   },
   methods: {
-    ...mapActions("global", ["ActionGetMetas", "ActionSetModalCreateUpdate", "ActionSetModalDataForm"]),
-    ...mapGetters("global", ['getMetas']),
+    ...mapActions("global", [
+      "ActionGetMetas",
+      "ActionSetModalCreateUpdate",
+      "ActionSetModalDataForm",
+    ]),
+    ...mapGetters("global", ["getMetas"]),
     getHeaderDataTable() {
       this.datatable.headers = [
         { text: "Título", value: "titulo" },
@@ -103,7 +101,6 @@ export default {
       this.ActionGetMetas();
     },
     buttonCreated() {
-      this.ActionSetModalDataForm({}); 
       this.ActionSetModalCreateUpdate({
         dialog: true,
         title: "Cadastro de Metas",
@@ -111,10 +108,13 @@ export default {
       });
     },
     buttonEdit(item) {
-      var formItem = item;
-      formItem.endpoint = "/meta";
-      formItem.method = "put";
-      this.ActionSetModalDataForm(formItem); 
+      var payload = {
+        endpoint: `/meta/${item.id}`,
+        method: "put",
+        form : item,
+        validation : {}
+      };
+      this.ActionSetModalDataForm(payload);
       this.ActionSetModalCreateUpdate({
         dialog: true,
         title: `Edição da Meta: ${item.titulo}`,

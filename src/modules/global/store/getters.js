@@ -1,7 +1,7 @@
 const getters = {
   getMetas(state) {
-    return state.metas
-  }
-}
+    return state.metas;
+  },
+};
 
-export default getters
+export default getters;

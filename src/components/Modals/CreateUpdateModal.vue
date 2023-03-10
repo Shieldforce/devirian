@@ -12,8 +12,12 @@
           v-model="valid"
           lazy-validation
         >
-          <v-card-title style="background:#cecece;">
-            <span class="text-h5" style="width:100%; text-align:center;">{{ title }}</span>
+          <v-card-title style="background: #cecece">
+            <span
+              class="text-h5"
+              style="width: 100%; text-align: center"
+              >{{ title }}</span
+            >
           </v-card-title>
           <slot
             name="form"
@@ -65,29 +69,31 @@ export default {
     });
   },
   methods: {
-    ...mapActions("global", ["ActionSetModalDataForm", "ActionSetSnackbar", "ActionSetDataFormSubmit", "ActionGetMetas"]),
+    ...mapActions("global", [
+      "ActionSetModalDataForm",
+      "ActionSetSnackbar",
+      "ActionSetDataFormSubmit",
+      "ActionGetMetas",
+    ]),
     submitForm() {
-      this.clearValidaton();    
-      if (this.$refs.form.validate()) {
-        this.ActionSetDataFormSubmit(this.$store.state.global.dataForm)
+      this.ActionSetDataFormSubmit(this.$store.state.global.dataForm)
         .then(() => {
           this.ActionGetMetas();
           this.dialog = false;
         })
         .catch((err) => {
           if (err.response.status === 422) {
-            this.clearValidaton(err.response.data.errors);
+            this.setValidaton(err.response.data.errors);
             this.$refs.form.validate();
             this.errosValidations(err.response.data.message);
           }
         });
-        return true;
-      }
-      this.errosValidations();
     },
     errosValidations(msg = null) {
       var text = "Atenção aos erros do formulário!";
-      if(msg) { text = msg }
+      if (msg) {
+        text = msg;
+      }
       this.ActionSetSnackbar({
         reset: false,
         show: true,
@@ -95,16 +101,32 @@ export default {
         text: text,
       });
     },
-    clearValidaton(errors = null) {
-      var form = this.$store.state.global.dataForm;
-      form.validation = [];
-      if(errors) {
-        form.validation = errors;
+    setValidaton(errors = null) {
+      if (errors) {
+        var payload = this.$store.state.global.dataForm;
+        payload.validation = errors;
+        this.ActionSetModalDataForm(payload);
       }
-      form.validation.method = [(v) => !!v || "Method é obrigatório"];
-      form.validation.endpoint = [(v) => !!v || "Endpoint é obrigatório"];
-      this.ActionSetModalDataForm(form);
     },
+  },
+  watch:{
+    dialog() {
+      var payload = this.$store.state.global.dataForm;
+
+      if(this.dialog === false && payload.method === "post") {
+        this.$refs.form.reset();
+      }
+
+      if(this.dialog === false) {
+        this.$refs.form.resetValidation();
+        this.ActionSetSnackbar({
+          reset: false,
+          show: false,
+          color: "rgba(255,0,0,0.5)",
+          text: "",
+        });
+      }
+    }
   },
 };
 </script>

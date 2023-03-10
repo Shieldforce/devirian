@@ -6,27 +6,17 @@ import { mapActions } from "vuex";
 export default {
   name: "FormCreateUpdateMetas",
   data: () => ({
-    rangerImpacto: { label: 'Impacto: ', val: 50, color: 'red' },
-    rangerConcluida: { label: 'Concluída: ', val: 0, color: 'green' },
+    rangerImpacto: { label: "Impacto: ", val: 50, color: "red" },
+    rangerConcluida: { label: "Concluída: ", val: 0, color: "green" },
+    endpoint: "/meta",
+    method: "post",
     form: {
-      endpoint: "/meta",
-      method: "post",
       concluida: 0,
       titulo: "",
       descricao: "",
       aplicacao: [],
       prazo: [],
       impacto: 0,
-      validation: {
-        endpoint: [(v) => !!v || "Endpoint é obrigatório"],
-        method: [(v) => !!v || "Method é obrigatório"],
-        titulo: "",
-        descricao: "",
-        aplicacao: "",
-        prazo: "",
-        impacto: "",
-        concluida: "",
-      },
     },
   }),
   created() {
@@ -35,20 +25,30 @@ export default {
   methods: {
     ...mapActions("global", ["ActionSetModalDataForm"]),
     mountDataForm() {
-      var form = this.form;
-      if(this.$store.state.global.dataForm.endpoint) {
-        form = this.$store.state.global.dataForm
+      var payload = {
+        endpoint: this.endpoint,
+        method: this.method,
+        form : this.form,
+        validation : {}
+      };
+      if (this.$store.state.global.dataForm.endpoint) {
+        payload = this.$store.state.global.dataForm;
       }
-      this.ActionSetModalDataForm(form);
+      this.ActionSetModalDataForm(payload);
       this.resetValidation();
     },
     resetValidation(name = null) {
-      var form = this.$store.state.global.dataForm;
-      if(name) {
-        form.validation[name] = "";
+      var payload = {
+        endpoint: this.$store.state.global.dataForm.endpoint,
+        method: this.$store.state.global.dataForm.method,
+        form : this.$store.state.global.dataForm.form,
+        validation : this.$store.state.global.dataForm.validation
+      };
+      if (name) {
+        payload.validation[name] = [];
       }
-      this.ActionSetModalDataForm(form);
+      this.ActionSetModalDataForm(payload);
     },
-  },
+  }
 };
 </script>

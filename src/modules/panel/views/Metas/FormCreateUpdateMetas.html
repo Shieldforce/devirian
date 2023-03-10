@@ -1,20 +1,6 @@
 <v-card-text>
-  <div style="padding: 5%;">
+  <div style="padding: 5%">
     <v-row>
-      <v-text-field 
-      v-model="$store.state.global.dataForm.endpoint" 
-      required
-      :rules="[...form.validation.endpoint]"
-      hidden
-      style="display: none;"
-      ></v-text-field>
-      <v-text-field 
-      v-model="$store.state.global.dataForm.method" 
-      required
-      :rules="[...form.validation.method]"
-      hidden
-      style="display: none;"
-      ></v-text-field>
       <v-col
         cols="12"
         sm="12"
@@ -23,8 +9,8 @@
         <v-text-field
           @keydown.stop="resetValidation('titulo')"
           label="Título*"
-          v-model="$store.state.global.dataForm.titulo"
-          :rules="[...form.validation.titulo]"
+          v-model="$store.state.global.dataForm.form.titulo"
+          :rules="[ ...$store.state.global.dataForm.validation.titulo ?? [] ]"
           required
         ></v-text-field>
       </v-col>
@@ -36,8 +22,8 @@
         <v-text-field
           @keydown.stop="resetValidation('descricao')"
           label="Descrição*"
-          v-model="$store.state.global.dataForm.descricao"
-          :rules="[...form.validation.descricao]"
+          v-model="$store.state.global.dataForm.form.descricao"
+          :rules="[...$store.state.global.dataForm.validation.descricao ?? []]"
           required
         ></v-text-field>
       </v-col>
@@ -49,8 +35,8 @@
           @change="resetValidation('prazo')"
           :items="['curto', 'médio', 'longo']"
           label="Prazo*"
-          v-model="$store.state.global.dataForm.prazo"
-          :rules="[...form.validation.prazo]"
+          v-model="$store.state.global.dataForm.form.prazo"
+          :rules="[...$store.state.global.dataForm.validation.prazo ?? []]"
           required
         ></v-select>
       </v-col>
@@ -62,8 +48,8 @@
           @change="resetValidation('aplicacao')"
           :items="['profissional', 'pessoal']"
           label="Aplicação*"
-          v-model="$store.state.global.dataForm.aplicacao"
-          :rules="[...form.validation.aplicacao]"
+          v-model="$store.state.global.dataForm.form.aplicacao"
+          :rules="[...$store.state.global.dataForm.validation.aplicacao ?? []]"
           required
         ></v-select>
       </v-col>
@@ -74,16 +60,16 @@
         md="6"
         class="mt-5"
       >
-      <v-slider
-        style="padding: 0 0 0 0;margin: 0 0 0 0;"
-        :label="rangerImpacto.label"
-        :thumb-color="rangerImpacto.color"
-        thumb-label="always"
-        @change="resetValidation('impacto')"
-        v-model="$store.state.global.dataForm.impacto"
-        :rules="[...form.validation.impacto]"
-        required
-    ></v-slider>
+        <v-slider
+          style="padding: 0 0 0 0; margin: 0 0 0 0"
+          :label="rangerImpacto.label"
+          :thumb-color="rangerImpacto.color"
+          thumb-label="always"
+          @change="resetValidation('impacto')"
+          v-model="$store.state.global.dataForm.form.impacto"
+          :rules="[...$store.state.global.dataForm.validation.impacto ?? []]"
+          required
+        ></v-slider>
       </v-col>
       <v-col
         cols="12"
@@ -91,16 +77,16 @@
         class="mt-5"
         md="6"
       >
-      <v-slider
-        style="padding: 0 0 0 0;margin: 0 0 0 0;"
-        :label="rangerConcluida.label"
-        :thumb-color="rangerConcluida.color"
-        thumb-label="always"
-        @change="resetValidation('concluida')"
-        v-model="$store.state.global.dataForm.concluida"
-        :rules="[...form.validation.concluida]"
-        required
-    ></v-slider>
+        <v-slider
+          style="padding: 0 0 0 0; margin: 0 0 0 0"
+          :label="rangerConcluida.label"
+          :thumb-color="rangerConcluida.color"
+          thumb-label="always"
+          @change="resetValidation('concluida')"
+          v-model="$store.state.global.dataForm.form.concluida"
+          :rules="[...$store.state.global.dataForm.validation.concluida ?? []]"
+          required
+        ></v-slider>
       </v-col>
     </v-row>
   </div>
