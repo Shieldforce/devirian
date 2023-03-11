@@ -1,79 +1,62 @@
 <template>
-  <lottie-component
-    :options="defaultOptions"
-    :width="config.width"
-    :height="config.height"
-    :class="config.class"
-  />
+  <div>
+    <lottie
+      :options="defaultOptions"
+      :height="600"
+      :width="500"
+      v-on:animCreated="handleAnimation"
+      class="flex justify"
+    />
+  </div>
 </template>
 
 <script>
+import Lottie from "vue-lottie";
 import * as animationData from "@/assets/lotties/rabbit.json";
 export default {
   name: "RabbitAnimateComponent",
   props: {
-    changeWidth: {
-      type: Number,
-      default: 600,
-    },
-    changeHeight: {
-      type: Number,
-      default: 600,
-    },
-    changeClass: {
-      type: String,
-      default: "flex justify",
-    },
-    changeLoop: {
-      type: Boolean,
-      default: true,
-    },
-    changeAutoplay: {
-      type: Boolean,
-      default: true,
-    },
-    changeAnimationData: {},
+    changePlay: {},
+    changePause: {},
+    changeStop: {},
     changeSpeed: {
       type: Number,
-      required: false,
-      default: 9,
+      default: 1,
     },
+  },
+  components: {
+    lottie: Lottie,
   },
   data() {
     return {
       defaultOptions: {
-        loop: true,
-        autoplay: true,
-        animationData: animationData.default,
-      },
-      config: {
-        width: 600,
-        height: 600,
-        class: "flex justify",
+        animationData: animationData,
       },
     };
   },
+  methods: {
+    handleAnimation: function (anim) {
+      this.anim = anim;
+    },
+  },
   watch: {
-    changeWidth(newValue) {
-      this.config.width = newValue;
+    changePlay(newValue) {
+      if (newValue) {
+        this.anim.play();
+      }
     },
-    changeHeight(newValue) {
-      this.config.height = newValue;
+    changePause(newValue) {
+      if (newValue) {
+        this.anim.pause();
+      }
     },
-    changeClass(newValue) {
-      this.config.class = newValue;
-    },
-    changeLoop(newValue) {
-      this.defaultOptions.loop = newValue;
-    },
-    changeAutoplay(newValue) {
-      this.defaultOptions.autoplay = newValue;
-    },
-    changeAnimationData(newValue) {
-      this.defaultOptions.animationData = newValue;
+    changeStop(newValue) {
+      if (newValue) {
+        this.anim.stop();
+      }
     },
     changeSpeed(newValue) {
-      this.defaultOptions.speed(newValue);
+      this.anim.setSpeed(newValue);
     },
   },
 };

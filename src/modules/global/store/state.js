@@ -16,4 +16,5 @@ export default {
   },
   dataForm: {},
   metas: {},
+  metasConcluidas: {},
 };

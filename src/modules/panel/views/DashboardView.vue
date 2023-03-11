@@ -25,7 +25,12 @@
             isso, quanto mais tarefas acumuladas, mais difícil fica a minha
             concentração e meditação!
           </v-alert>
-          <RabbitAnimateComponent :changeSpeed="changeSpeed" />
+          <RabbitAnimateComponent
+            :changeSpeed="changeSpeed"
+            :changePlay="changePlay"
+            :changePause="changePause"
+            :changeStop="changeStop"
+          />
         </v-col>
         <v-col
           cols="12"
@@ -64,7 +69,10 @@ export default {
   },
   data() {
     return {
-      changeSpeed: 10,
+      changeSpeed: 1,
+      changePlay: false,
+      changePause: false,
+      changeStop: false,
       mainDashImg: {
         src: "",
         height: "",
@@ -88,7 +96,7 @@ export default {
       "ActionSetModalCreateUpdate",
       "ActionSetModalDataForm",
     ]),
-    ...mapGetters("global", ["getMetas"]),
+    ...mapGetters("global", ["getMetas", "getMetasConcluidas"]),
     getHeaderDataTable() {
       this.datatable.headers = [
         { text: "Título", value: "titulo" },
@@ -133,5 +141,17 @@ export default {
         });
     },
   },
+  watch:{
+    getMetasConcluidas(newValue, oldValue) {
+      console.log(newValue, oldValue);
+    },
+    '$store.state.global.metasConcluidas': {
+        immediate: true,
+        handler() {
+          var getMetasConcluidas = this.getMetasConcluidas();
+          this.changeSpeed = getMetasConcluidas.speed;
+        }
+     }
+  }
 };
 </script>

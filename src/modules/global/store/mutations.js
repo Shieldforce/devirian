@@ -19,4 +19,7 @@ export default {
   [types.GET_METAS](state, payload) {
     state.metas = payload;
   },
+  [types.GET_METAS_CONCLUIDAS](state, payload) {
+    state.metasConcluidas = payload;
+  },
 };
