@@ -50,5 +50,13 @@ export default {
       this.ActionSetModalDataForm(payload);
     },
   },
+  watch: {
+    "$store.state.global.modalCreateUpdateConfig": {
+      immediate: true,
+      handler() {
+        //console.log(this.$store.state.global.dataForm.method);
+      },
+    },
+  },
 };
 </script>

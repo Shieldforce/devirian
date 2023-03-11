@@ -110,6 +110,21 @@ export default {
       this.ActionGetMetas();
     },
     buttonCreated() {
+      var payload = {
+        endpoint: "/meta",
+        method: "post",
+        form: {
+          concluida: 0,
+          titulo: "",
+          descricao: "",
+          aplicacao: [],
+          prazo: [],
+          impacto: 0,
+        },
+        validation: {},
+      };
+      this.ActionSetModalDataForm(payload);
+
       this.ActionSetModalCreateUpdate({
         dialog: true,
         title: "Cadastro de Metas",
@@ -141,17 +156,20 @@ export default {
         });
     },
   },
-  watch:{
-    getMetasConcluidas(newValue, oldValue) {
-      console.log(newValue, oldValue);
+  watch: {
+    "$store.state.global.metasConcluidas": {
+      immediate: true,
+      handler() {
+        var getMetasConcluidas = this.getMetasConcluidas();
+        this.changeSpeed = getMetasConcluidas.speed;
+      },
     },
-    '$store.state.global.metasConcluidas': {
-        immediate: true,
-        handler() {
-          var getMetasConcluidas = this.getMetasConcluidas();
-          this.changeSpeed = getMetasConcluidas.speed;
-        }
-     }
-  }
+    "$store.state.global.metas": {
+      immediate: true,
+      handler() {
+        this.getDataTableResults();
+      },
+    },
+  },
 };
 </script>
