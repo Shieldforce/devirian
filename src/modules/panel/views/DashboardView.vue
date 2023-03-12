@@ -22,7 +22,7 @@
             Olá, meu nome é "Sr. coelho", sou um mestre jedi, estou a procura de
             minha paz interior. Mas nas horas vagas sou programador, e tenho que
             finalizar minhas metas e tarefas, então, por favor me ajuda com
-            isso, quanto mais tarefas acumuladas, mais difícil fica a minha
+            isso, quanto mais tarefas ou metas acumuladas, mais difícil fica a minha
             concentração e meditação!
           </v-alert>
           <RabbitAnimateComponent
