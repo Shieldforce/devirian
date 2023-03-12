@@ -73,10 +73,12 @@ export default {
       "ActionSetModalDataForm",
       "ActionSetSnackbar",
       "ActionSetDataFormSubmit",
+      "ActionGetMetas"
     ]),
     submitForm() {
       this.ActionSetDataFormSubmit(this.$store.state.global.dataForm)
         .then(() => {
+          this.ActionGetMetas();
           this.dialog = false;
         })
         .catch((err) => {

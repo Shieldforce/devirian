@@ -39,7 +39,7 @@
           xl="8"
           ><DataTableComponent
             :changeHeaders="datatable.headers"
-            :changeDesserts="this.getMetas()"
+            :changeDesserts="items"
             :changeTableTitle="datatable.title"
             :changeSearch="datatable.search"
             :changeFormTitle="datatable.formTitle"
@@ -82,6 +82,7 @@ export default {
         title: "",
         search: "",
       },
+      items: [],
     };
   },
   mounted() {
@@ -166,9 +167,14 @@ export default {
       },
     },
     "$store.state.global.metas": {
-      immediate: true,
       handler() {
-        this.getDataTableResults();
+        var metas = this.getMetas();
+        const newMetas = metas.map( meta => {
+          meta.title = meta.descricao.substring(0,30) + "...";
+          meta.descricao = meta.descricao.substring(0,30) + "...";
+          return meta;
+        });
+        this.items = newMetas;
       },
     },
   },
