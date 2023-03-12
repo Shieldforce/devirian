@@ -148,8 +148,9 @@ export default {
     buttonDeleted(item) {
       ApiTasks.delete(`/meta/${item.id}`)
         .then((response) => {
-          this.getDataTableResults();
-          console.log(response);
+          if (response) {
+            this.getDataTableResults();
+          }
         })
         .catch((error) => {
           console.log(error);
