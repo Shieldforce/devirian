@@ -6,6 +6,7 @@
 
 <script>
 import FormCreateUpdateMetas from "../../panel/views/Metas/FormCreateUpdateMetas.vue";
+import FormCreateUpdateTarefas from "../../panel/views/Tarefas/FormCreateUpdateTarefas.vue";
 
 export default {
   props: {
@@ -18,6 +19,7 @@ export default {
   name: "FormCreateUpdate",
   components: {
     FormCreateUpdateMetas,
+    FormCreateUpdateTarefas
   },
   data: () => ({}),
   created() {

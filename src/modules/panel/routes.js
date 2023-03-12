@@ -4,6 +4,7 @@ const routes = [
     name: "dashboard",
     meta: {
       scope: "private",
+      reload: true,
     },
     component: () =>
       import(
@@ -15,6 +16,7 @@ const routes = [
     name: "tasks",
     meta: {
       scope: "private",
+      reload: true,
     },
     component: () =>
       import(
@@ -26,6 +28,7 @@ const routes = [
     name: "about",
     meta: {
       scope: "private",
+      reload: true,
     },
     component: () =>
       import(

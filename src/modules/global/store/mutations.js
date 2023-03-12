@@ -22,4 +22,10 @@ export default {
   [types.GET_METAS_CONCLUIDAS](state, payload) {
     state.metasConcluidas = payload;
   },
+  [types.GET_TAREFAS](state, payload) {
+    state.tarefas = payload;
+  },
+  [types.GET_TAREFAS_CONCLUIDAS](state, payload) {
+    state.tarefasConcluidas = payload;
+  },
 };

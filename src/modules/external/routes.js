@@ -4,6 +4,7 @@ const routes = [
     name: "externalIndex",
     meta: {
       scope: "private",
+      reload: true,
     },
     component: () =>
       import(

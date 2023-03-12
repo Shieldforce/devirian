@@ -73,12 +73,18 @@ export default {
       "ActionSetModalDataForm",
       "ActionSetSnackbar",
       "ActionSetDataFormSubmit",
-      "ActionGetMetas"
+      //Adicionar lista --------
+      "ActionGetMetas",
+      "ActionGetTarefas",
+      //Adicionar lista --------
     ]),
     submitForm() {
       this.ActionSetDataFormSubmit(this.$store.state.global.dataForm)
         .then(() => {
+          //Adicionar lista --------
           this.ActionGetMetas();
+          this.ActionGetTarefas();
+          //Adicionar lista --------
           this.dialog = false;
         })
         .catch((err) => {

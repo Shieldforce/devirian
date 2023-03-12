@@ -5,25 +5,26 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import "./assets/scss/app.scss";
-import api from "@/modules/auth/http/apiTasks/index.js"
+import api from "@/modules/auth/http/apiTasks/index.js";
 
 Vue.config.productionTip = false;
 
 router.beforeEach((to, from, next) => {
-
-
   if (
     localStorage.getItem("token") &&
     localStorage.getItem("token") !== "undefined" &&
     to.meta.scope === "private"
   ) {
-    api.get("/auth/verifyToken").then(() => {
-      next();
-      return;
-    }).catch(() => {
-      localStorage.removeItem("token");
-      window.location.href = "/access";
-    });
+    api
+      .get("/auth/verifyToken")
+      .then(() => {
+        next();
+        return;
+      })
+      .catch(() => {
+        localStorage.removeItem("token");
+        window.location.href = "/access";
+      });
   }
 
   if (window.location.href.includes("resetPassword")) {

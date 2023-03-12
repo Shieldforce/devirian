@@ -21,9 +21,9 @@
           >
             Olá, meu nome é "Sr. coelho", sou um mestre jedi, estou a procura da
             minha paz interior. Mas nas horas vagas sou programador, e tenho que
-            finalizar minhas metas e tarefas, então, por favor me ajuda com
-            isso, quanto mais tarefas ou metas acumuladas, mais difícil fica a
-            minha concentração e meditação!
+            finalizar minhas metas, então, por favor me ajuda com isso, quanto
+            mais metas acumuladas, mais difícil fica a minha concentração e
+            meditação!
 
             <hr class="mt-2" />
             <v-progress-linear
@@ -108,6 +108,7 @@ export default {
     this.datatable.title = "Metas";
     this.getHeaderDataTable();
     this.getDataTableResults();
+    this.setProgressBar();
   },
   methods: {
     ...mapActions("global", [
@@ -220,25 +221,24 @@ export default {
           console.log(error);
         });
     },
+    setProgressBar() {
+      var getMetasConcluidas = this.getMetasConcluidas();
+      this.changeSpeed = getMetasConcluidas.speed;
+      this.progressBar.color = getMetasConcluidas.progressColor;
+      this.progressBar.knowledge = getMetasConcluidas.progressValue;
+    },
   },
   watch: {
     "$store.state.global.metasConcluidas": {
       immediate: true,
       handler() {
-        var getMetasConcluidas = this.getMetasConcluidas();
-        this.changeSpeed = getMetasConcluidas.speed;
-        this.progressBar.color = getMetasConcluidas.progressColor;
-        this.progressBar.knowledge = getMetasConcluidas.progressValue;
+        this.setProgressBar();
       },
     },
     "$store.state.global.metas": {
       handler() {
-        // var metas = this.getMetas();
-        // const newMetas = metas.map((meta) => {
-        //   meta.titulo = meta.titulo.substring(0, 50) + "...";
-        //   return meta;
-        // });
         this.items = this.getMetas();
+        this.setProgressBar();
       },
     },
   },

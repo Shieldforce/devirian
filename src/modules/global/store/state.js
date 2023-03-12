@@ -17,4 +17,6 @@ export default {
   dataForm: {},
   metas: {},
   metasConcluidas: {},
+  tarefas: {},
+  tarefasConcluidas: {},
 };

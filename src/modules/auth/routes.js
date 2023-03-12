@@ -4,6 +4,7 @@ const routes = [
     name: "access",
     meta: {
       scope: "public",
+      reload: true,
     },
     component: () =>
       import(
@@ -15,6 +16,7 @@ const routes = [
     name: "resetPassword",
     meta: {
       scope: "public",
+      reload: true,
     },
     component: () =>
       import(
