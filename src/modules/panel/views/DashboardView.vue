@@ -20,7 +20,7 @@
             min-height="200"
           >
             Olá, meu nome é "Sr. coelho", sou um mestre jedi, estou a procura da
-            minha paz interior. Mas nas horas vagas sou programador, e tenho que
+            minha paz interior. Mas, nas horas vagas sou uma pessoa normal, rss, e tenho que
             finalizar minhas metas, então, por favor me ajuda com isso, quanto
             mais metas acumuladas, mais difícil fica a minha concentração e
             meditação!
@@ -89,8 +89,8 @@ export default {
       changePause: false,
       changeStop: false,
       mainDashImg: {
-        src: "",
-        height: "",
+        src: "/img/paisagem3.jpg",
+        height: "85vh",
       },
       datatable: {
         headers: [],
@@ -109,6 +109,9 @@ export default {
     this.getHeaderDataTable();
     this.getDataTableResults();
     this.setProgressBar();
+  },
+  destroyed() {
+    window.location.reload(false);
   },
   methods: {
     ...mapActions("global", [

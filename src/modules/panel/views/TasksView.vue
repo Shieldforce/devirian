@@ -19,11 +19,10 @@
             prominent
             min-height="200"
           >
-            Olá, meu nome é "Sr. coelho", sou um mestre jedi, estou a procura da
-            minha paz interior. Mas nas horas vagas sou programador, e tenho que
-            finalizar minhas tarefas, então, por favor me ajuda com isso, quanto
-            mais tarefas acumuladas, mais difícil fica a minha concentração e
-            meditação!
+            Olá, meu nome é "Alfredo", sou um profissional buscando uma posição de destaque no mercado 
+            de trabalho, fico muito cansado quando não tenho ajuda, e precisao trabalhar muito rápido.
+            É muito cansativo trabalhar sozinho. Que tal me dar uma ajuda? 
+            Podemos dividir o valor que ganharei com esses jobs!
 
             <hr class="mt-2" />
             <v-progress-linear
@@ -37,7 +36,7 @@
               >
             </v-progress-linear>
           </v-alert>
-          <RabbitAnimateComponent
+          <Programming1AnimateComponent
             :changeSpeed="changeSpeed"
             :changePlay="changePlay"
             :changePause="changePause"
@@ -69,7 +68,7 @@
 </template>
 
 <script>
-import RabbitAnimateComponent from "@/modules/global/components/RabbitAnimateComponent.vue";
+import Programming1AnimateComponent from "@/modules/global/components/Programming1AnimateComponent.vue";
 import DataTableComponent from "@/modules/global/components/DataTableComponent.vue";
 import MainDashboardImg from "@/modules/global/components/MainDashboardImg.vue";
 import ApiTasks from "@/modules/auth/http/apiTasks/index.js";
@@ -78,7 +77,7 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "TasksView",
   components: {
-    RabbitAnimateComponent,
+    Programming1AnimateComponent,
     DataTableComponent,
     MainDashboardImg,
   },
@@ -89,8 +88,8 @@ export default {
       changePause: false,
       changeStop: false,
       mainDashImg: {
-        src: "",
-        height: "",
+        src: "/img/paisagem4.jpg",
+        height: "85vh",
       },
       datatable: {
         headers: [],
@@ -109,6 +108,9 @@ export default {
     this.getHeaderDataTable();
     this.getDataTableResults();
     this.setProgressBar();
+  },
+  destroyed() {
+    window.location.reload(false);
   },
   methods: {
     ...mapActions("global", [
@@ -221,9 +223,9 @@ export default {
           console.log(error);
         });
     },
-    setProgressBar() {
+    setProgressBar(value = null) {
       var getTarefasConcluidas = this.getTarefasConcluidas();
-      this.changeSpeed = getTarefasConcluidas.speed;
+      this.changeSpeed = value ? value : getTarefasConcluidas.speed;
       this.progressBar.color = getTarefasConcluidas.progressColor;
       this.progressBar.knowledge = getTarefasConcluidas.progressValue;
     },

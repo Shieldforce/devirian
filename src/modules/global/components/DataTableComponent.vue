@@ -1,5 +1,5 @@
 <template>
-  <v-card :color="color">
+  <v-card :color="color" dark>
     <v-card-title style="color: white">
       <v-btn
         class="mx-2"
@@ -51,7 +51,7 @@
       ></v-text-field>
     </v-card-title>
     <v-data-table
-      :style="`background-color: ${color}`"
+      :style="`background-color: ${color};`"
       dark
       :headers="headers"
       :items="desserts"
@@ -288,3 +288,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+  .v-text-field__slot > input{
+    color: white !important;
+  }
+</style>

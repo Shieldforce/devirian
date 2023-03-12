@@ -106,24 +106,20 @@ export const ActionGetTarefas = ({ commit }, payload) => {
       });
       var media = concluida / parseInt(items.length);
       var progressColor = "rgba(0,0,0, 0.3)";
-      var speed = 1;
+      var speed = 0;
       if (media < 10) {
-        speed = 11;
-        progressColor = "rgba(255,0,0, 0.3)";
-      }
-      if (media >= 10 && media < 20) {
         speed = 10;
         progressColor = "rgba(255,0,0, 0.3)";
       }
-      if (media >= 20 && media < 30) {
+      if (media >= 10 && media < 20) {
         speed = 9;
         progressColor = "rgba(255,0,0, 0.3)";
       }
-      if (media >= 30 && media < 40) {
+      if (media >= 20 && media < 30) {
         speed = 8;
-        progressColor = "rgba(255,117,24, 0.3)";
+        progressColor = "rgba(255,0,0, 0.3)";
       }
-      if (media >= 40 && media < 50) {
+      if (media >= 30 && media < 40) {
         speed = 7;
         progressColor = "rgba(255,117,24, 0.3)";
       }
@@ -131,24 +127,28 @@ export const ActionGetTarefas = ({ commit }, payload) => {
         speed = 6;
         progressColor = "rgba(255,117,24, 0.3)";
       }
-      if (media >= 50 && media < 60) {
+      if (media >= 40 && media < 50) {
         speed = 5;
-        progressColor = "rgba(255,255,0, 0.3)";
+        progressColor = "rgba(255,117,24, 0.3)";
       }
-      if (media >= 60 && media < 70) {
+      if (media >= 50 && media < 60) {
         speed = 4;
         progressColor = "rgba(255,255,0, 0.3)";
       }
-      if (media >= 70 && media < 80) {
+      if (media >= 60 && media < 70) {
         speed = 3;
         progressColor = "rgba(255,255,0, 0.3)";
       }
-      if (media >= 80 && media < 90) {
+      if (media >= 70 && media < 80) {
         speed = 2;
+        progressColor = "rgba(255,255,0, 0.3)";
+      }
+      if (media >= 80 && media < 90) {
+        speed = 1;
         progressColor = "rgba(50,205,50, 0.3)";
       }
       if (media >= 90 && media <= 100) {
-        speed = 1;
+        speed = 0;
         progressColor = "rgba(50,205,50, 0.3)";
       }
       var progressValue = speed * 10 - 10;

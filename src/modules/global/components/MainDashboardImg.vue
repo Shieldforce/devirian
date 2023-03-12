@@ -1,7 +1,7 @@
 <template>
   <v-img
-    :src="src"
-    :height="height"
+    :src="changeSrc"
+    :height="changeHeight"
   >
     <div class="container-10 flex justify">
       <v-row>
@@ -33,26 +33,17 @@ export default {
   props: {
     changeSrc: {
       type: String,
-      required: true,
+      require: true,
+      default: "/img/paisagem3.jpg",
     },
     changeHeight: {
       type: String,
-      required: true,
+      require: true,
+      default: "85vh",
     },
   },
   data() {
-    return {
-      src: "/img/paisagem3.jpg",
-      height: "85vh",
-    };
-  },
-  watch: {
-    changeSrc() {
-      this.src = this.changeSrc;
-    },
-    changeHeight() {
-      this.height = this.changeHeight;
-    },
-  },
+    return {};
+  }
 };
 </script>

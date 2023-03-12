@@ -19,7 +19,7 @@ export default {
   name: "FormCreateUpdate",
   components: {
     FormCreateUpdateMetas,
-    FormCreateUpdateTarefas
+    FormCreateUpdateTarefas,
   },
   data: () => ({}),
   created() {
