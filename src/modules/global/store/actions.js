@@ -148,10 +148,14 @@ export const ActionGetTarefas = ({ commit }, payload) => {
         progressColor = "rgba(50,205,50, 0.3)";
       }
       if (media >= 90 && media <= 100) {
+        speed = 1;
+        progressColor = "rgba(50,205,50, 0.3)";
+      }
+      if (media == 100) {
         speed = 0;
         progressColor = "rgba(50,205,50, 0.3)";
       }
-      var progressValue = speed * 10 - 10;
+      var progressValue = speed * 10;
       commit(types.GET_TAREFAS, response.data.data);
       commit(types.GET_TAREFAS_CONCLUIDAS, {
         speed: speed,

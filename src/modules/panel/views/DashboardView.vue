@@ -3,6 +3,7 @@
     <MainDashboardImg
       :changeSrc="mainDashImg.src"
       :changeHeight="mainDashImg.height"
+      :changeText="mainDashImg.text"
     >
       <v-row>
         <v-col
@@ -91,6 +92,7 @@ export default {
       mainDashImg: {
         src: "/img/paisagem3.jpg",
         height: "85vh",
+        text: "Quando você define objetivos, sua vida começa a ter sentido.",
       },
       datatable: {
         headers: [],

@@ -3,6 +3,7 @@
     <MainDashboardImg
       :changeSrc="mainDashImg.src"
       :changeHeight="mainDashImg.height"
+      :changeText="mainDashImg.text"
     >
       <v-row>
         <v-col
@@ -20,9 +21,9 @@
             min-height="200"
           >
             Olá, meu nome é "Alfredo", sou um profissional buscando uma posição de destaque no mercado 
-            de trabalho, fico muito cansado quando não tenho ajuda, e precisao trabalhar muito rápido.
+            de trabalho, fico muito cansado quando não tenho ajuda e preciso trabalhar muito rápido.
             É muito cansativo trabalhar sozinho. Que tal me dar uma ajuda? 
-            Podemos dividir o valor que ganharei com esses jobs!
+            Podemos dividir a grana que irei receber pelos jobs!
 
             <hr class="mt-2" />
             <v-progress-linear
@@ -31,12 +32,12 @@
               :color="progressBar.color"
             >
               <strong
-                >Nível de Stress:
+                >Tarefas Acumuladas:
                 {{ Math.ceil(progressBar.knowledge) }}%</strong
               >
             </v-progress-linear>
           </v-alert>
-          <Programming1AnimateComponent
+          <Programming2AnimateComponent
             :changeSpeed="changeSpeed"
             :changePlay="changePlay"
             :changePause="changePause"
@@ -68,7 +69,7 @@
 </template>
 
 <script>
-import Programming1AnimateComponent from "@/modules/global/components/Programming1AnimateComponent.vue";
+import Programming2AnimateComponent from "@/modules/global/components/Programming2AnimateComponent.vue";
 import DataTableComponent from "@/modules/global/components/DataTableComponent.vue";
 import MainDashboardImg from "@/modules/global/components/MainDashboardImg.vue";
 import ApiTasks from "@/modules/auth/http/apiTasks/index.js";
@@ -77,7 +78,7 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "TasksView",
   components: {
-    Programming1AnimateComponent,
+    Programming2AnimateComponent,
     DataTableComponent,
     MainDashboardImg,
   },
@@ -90,6 +91,7 @@ export default {
       mainDashImg: {
         src: "/img/paisagem4.jpg",
         height: "85vh",
+        text: "Sozinho não conseguimos chegar em lugar algum!",
       },
       datatable: {
         headers: [],

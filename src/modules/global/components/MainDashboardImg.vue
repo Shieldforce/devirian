@@ -18,7 +18,7 @@
               background-color: rgba(0, 0, 0, 0.3);
             "
           >
-            Quando você define objetivos, sua vida começa a ter sentido.
+            {{ changeText }}
           </h1></v-col
         >
       </v-row>
@@ -40,6 +40,11 @@ export default {
       type: String,
       require: true,
       default: "85vh",
+    },
+    changeText: {
+      type: String,
+      require: true,
+      default: "No text",
     },
   },
   data() {
