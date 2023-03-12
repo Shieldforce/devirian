@@ -91,7 +91,7 @@ export default {
       mainDashImg: {
         src: "/img/paisagem4.jpg",
         height: "85vh",
-        text: "Sozinho não conseguimos chegar em lugar algum!",
+        text: "O problema de estar um passo a frente de todos é que você está caminhando sozinho.",
       },
       datatable: {
         headers: [],
