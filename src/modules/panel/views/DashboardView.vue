@@ -19,11 +19,23 @@
             prominent
             min-height="200"
           >
-            Olá, meu nome é "Sr. coelho", sou um mestre jedi, estou a procura de
+            Olá, meu nome é "Sr. coelho", sou um mestre jedi, estou a procura da
             minha paz interior. Mas nas horas vagas sou programador, e tenho que
             finalizar minhas metas e tarefas, então, por favor me ajuda com
-            isso, quanto mais tarefas ou metas acumuladas, mais difícil fica a minha
-            concentração e meditação!
+            isso, quanto mais tarefas ou metas acumuladas, mais difícil fica a
+            minha concentração e meditação!
+
+            <hr class="mt-2" />
+            <v-progress-linear
+              v-model="progressBar.knowledge"
+              height="25"
+              :color="progressBar.color"
+            >
+              <strong
+                >Nível de Stress:
+                {{ Math.ceil(progressBar.knowledge) }}%</strong
+              >
+            </v-progress-linear>
           </v-alert>
           <RabbitAnimateComponent
             :changeSpeed="changeSpeed"
@@ -47,6 +59,9 @@
             @created="buttonCreated"
             @edit="buttonEdit"
             @deleted="buttonDeleted"
+            @checkMassive="checkMassive"
+            @uncheckMassive="uncheckMassive"
+            @deleteMassive="deleteMassive"
         /></v-col>
       </v-row>
     </MainDashboardImg>
@@ -83,11 +98,14 @@ export default {
         search: "",
       },
       items: [],
+      progressBar: {
+        knowledge: 0,
+        color: "rgba(0,0,0, 0.3)",
+      },
     };
   },
   mounted() {
-    this.datatable.title =
-      "Quando você define objetivos, sua vida começa a ter sentido.";
+    this.datatable.title = "Metas";
     this.getHeaderDataTable();
     this.getDataTableResults();
   },
@@ -100,11 +118,9 @@ export default {
     ...mapGetters("global", ["getMetas", "getMetasConcluidas"]),
     getHeaderDataTable() {
       this.datatable.headers = [
-        { text: "Título", value: "titulo" },
-        { text: "Descrição", value: "descricao" },
-        { text: "Ações", value: "actions" },
-        { text: "", value: "deleted" },
-        { text: "", value: "edit" },
+        { text: "Título", value: "titulo", width: "40%" },
+        { text: "Concluída", value: "concluida", width: "40%" },
+        { text: "Ações", value: "actions", width: "20%" },
       ];
     },
     getDataTableResults() {
@@ -147,7 +163,54 @@ export default {
       });
     },
     buttonDeleted(item) {
-      ApiTasks.delete(`/meta/${item.id}`)
+      if (item.id) {
+        ApiTasks.delete(`/meta/${item.id}`)
+          .then((response) => {
+            if (response) {
+              this.getDataTableResults();
+            }
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    },
+    uncheckMassive(items) {
+      var data = {
+        ids: items.map((item) => item.id),
+        concluida: 0,
+      };
+      ApiTasks.post(`/meta/checkMassive`, data)
+        .then((response) => {
+          if (response) {
+            this.getDataTableResults();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    checkMassive(items) {
+      var data = {
+        ids: items.map((item) => item.id),
+        concluida: 100,
+      };
+      ApiTasks.post(`/meta/checkMassive`, data)
+        .then((response) => {
+          if (response) {
+            this.getDataTableResults();
+          }
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    },
+    deleteMassive(items) {
+      var data = {
+        ids: items.map((item) => item.id),
+        delete: true,
+      };
+      ApiTasks.post(`/meta/deleteMassive`, data)
         .then((response) => {
           if (response) {
             this.getDataTableResults();
@@ -164,17 +227,18 @@ export default {
       handler() {
         var getMetasConcluidas = this.getMetasConcluidas();
         this.changeSpeed = getMetasConcluidas.speed;
+        this.progressBar.color = getMetasConcluidas.progressColor;
+        this.progressBar.knowledge = getMetasConcluidas.progressValue;
       },
     },
     "$store.state.global.metas": {
       handler() {
-        var metas = this.getMetas();
-        const newMetas = metas.map( meta => {
-          meta.title = meta.descricao.substring(0,30) + "...";
-          meta.descricao = meta.descricao.substring(0,30) + "...";
-          return meta;
-        });
-        this.items = newMetas;
+        // var metas = this.getMetas();
+        // const newMetas = metas.map((meta) => {
+        //   meta.titulo = meta.titulo.substring(0, 50) + "...";
+        //   return meta;
+        // });
+        this.items = this.getMetas();
       },
     },
   },

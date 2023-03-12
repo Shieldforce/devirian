@@ -18,7 +18,7 @@
               background-color: rgba(0, 0, 0, 0.3);
             "
           >
-            Seja bem vindo ao mundo "DEVIRIAN"
+            Quando você define objetivos, sua vida começa a ter sentido.
           </h1></v-col
         >
       </v-row>
