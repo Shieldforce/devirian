@@ -81,6 +81,7 @@
           class="mx-2"
           icon
           @click="($event) => edit(props.item)"
+          :title="`Editar item: ${props.item.id}`"
         >
           <v-icon dark>mdi-pencil</v-icon>
         </v-btn>
@@ -88,6 +89,7 @@
           class="mx-2"
           icon
           @click="($event) => deleted(props.item)"
+          :title="`Deletar item: ${props.item.id}`"
         >
           <v-icon dark>mdi-delete</v-icon>
         </v-btn>
@@ -218,7 +220,7 @@ export default {
     deleteMassive() {
       this.ActionSetModalConfirm({
         dialog: true,
-        title: "Concluídas!",
+        title: "Exclusão!",
         message: "Deseja excluir todos esses itens selecionados?",
       });
       this.$store.subscribe((mutation, state) => {
