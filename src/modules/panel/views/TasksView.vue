@@ -20,10 +20,19 @@
             prominent
             min-height="200"
           >
-            Olá, meu nome é "Alfredo", sou um profissional buscando uma posição de destaque no mercado 
-            de trabalho, fico muito cansado quando não tenho ajuda e preciso trabalhar muito rápido.
-            É muito cansativo trabalhar sozinho. Que tal me dar uma ajuda? 
-            Podemos dividir a grana que irei receber pelos jobs!
+            <div v-show="hiddenFlow">
+              Olá, meu nome é "Alfredo", sou um profissional buscando uma
+              posição de destaque no mercado de trabalho, fico muito cansado
+              quando não tenho ajuda e preciso trabalhar muito rápido. É muito
+              cansativo trabalhar sozinho. Que tal me dar uma ajuda? Podemos
+              dividir a grana que irei receber pelos jobs!
+            </div>
+            <div v-show="!hiddenFlow">
+              E ai pessoal, curtir folga é muito bom, mas se vocês precisarem de mim 
+              só chamar ou criar uma tarefa, que já chega a notificação aqui no meu email.
+              Claro que eu vou cobrar uma graninha né, nem relógio trabalha de graça, kkkkk.
+              Bom deixa eu ficar de boa aqui, vlw.
+            </div>
 
             <hr class="mt-2" />
             <v-progress-linear
@@ -251,13 +260,13 @@ export default {
     },
     setFlow() {
       var getTarefasConcluidas = this.getTarefasConcluidas();
-      if(getTarefasConcluidas.progressValue==0) {
-          this.mainDashImg.src = "/img/paisagem7.jpg";
-          this.hiddenFlow = false;
+      if (getTarefasConcluidas.progressValue == 0) {
+        this.mainDashImg.src = "/img/paisagem7.jpg";
+        this.hiddenFlow = false;
       }
-      if(getTarefasConcluidas.progressValue!=0) {
-          this.mainDashImg.src = "/img/paisagem4.jpg";
-          this.hiddenFlow = true;
+      if (getTarefasConcluidas.progressValue != 0) {
+        this.mainDashImg.src = "/img/paisagem4.jpg";
+        this.hiddenFlow = true;
       }
     },
   },
