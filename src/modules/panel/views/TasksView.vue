@@ -42,6 +42,18 @@
             :changePlay="changePlay"
             :changePause="changePause"
             :changeStop="changeStop"
+            :changeHeight="changeHeight"
+            :changeWidth="changeWidth"
+            v-show="hiddenFlow"
+          />
+          <Vacation1AnimateComponent
+            :changeSpeed="changeSpeed"
+            :changePlay="changePlay"
+            :changePause="changePause"
+            :changeStop="changeStop"
+            :changeHeight="changeHeight"
+            :changeWidth="changeWidth"
+            v-show="!hiddenFlow"
           />
         </v-col>
         <v-col
@@ -70,6 +82,7 @@
 
 <script>
 import Programming2AnimateComponent from "@/modules/global/components/Programming2AnimateComponent.vue";
+import Vacation1AnimateComponent from "@/modules/global/components/Vacation1AnimateComponent.vue";
 import DataTableComponent from "@/modules/global/components/DataTableComponent.vue";
 import MainDashboardImg from "@/modules/global/components/MainDashboardImg.vue";
 import ApiTasks from "@/modules/auth/http/apiTasks/index.js";
@@ -79,6 +92,7 @@ export default {
   name: "TasksView",
   components: {
     Programming2AnimateComponent,
+    Vacation1AnimateComponent,
     DataTableComponent,
     MainDashboardImg,
   },
@@ -88,6 +102,9 @@ export default {
       changePlay: false,
       changePause: false,
       changeStop: false,
+      changeHeight: 480,
+      changeWidth: 480,
+      hiddenFlow: false,
       mainDashImg: {
         src: "/img/paisagem4.jpg",
         height: "85vh",
@@ -109,6 +126,7 @@ export default {
     this.datatable.title = "Tarefas";
     this.getHeaderDataTable();
     this.getDataTableResults();
+    this.setFlow();
     this.setProgressBar();
   },
   destroyed() {
@@ -231,11 +249,23 @@ export default {
       this.progressBar.color = getTarefasConcluidas.progressColor;
       this.progressBar.knowledge = getTarefasConcluidas.progressValue;
     },
+    setFlow() {
+      var getTarefasConcluidas = this.getTarefasConcluidas();
+      if(getTarefasConcluidas.progressValue==0) {
+          this.mainDashImg.src = "/img/paisagem7.jpg";
+          this.hiddenFlow = false;
+      }
+      if(getTarefasConcluidas.progressValue!=0) {
+          this.mainDashImg.src = "/img/paisagem4.jpg";
+          this.hiddenFlow = true;
+      }
+    },
   },
   watch: {
     "$store.state.global.tarefasConcluidas": {
       immediate: true,
       handler() {
+        this.setFlow();
         this.setProgressBar();
       },
     },

@@ -43,6 +43,8 @@
             :changePlay="changePlay"
             :changePause="changePause"
             :changeStop="changeStop"
+            :changeHeight="changeHeight"
+            :changeWidth="changeWidth"
           />
         </v-col>
         <v-col
@@ -89,6 +91,8 @@ export default {
       changePlay: false,
       changePause: false,
       changeStop: false,
+      changeHeight: 480,
+      changeWidth: 480,
       mainDashImg: {
         src: "/img/paisagem3.jpg",
         height: "85vh",

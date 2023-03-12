@@ -105,6 +105,9 @@ export const ActionGetTarefas = ({ commit }, payload) => {
         concluida = parseInt(concluida + data.concluida);
       });
       var media = concluida / parseInt(items.length);
+      if(items.length===0) {
+        media = 100;
+      }
       var progressColor = "rgba(0,0,0, 0.3)";
       var speed = 0;
       if (media < 10) {
@@ -157,6 +160,9 @@ export const ActionGetTarefas = ({ commit }, payload) => {
       }
       var progressValue = speed * 10;
       commit(types.GET_TAREFAS, response.data.data);
+      if(media===100) {
+        speed = 1;
+      }
       commit(types.GET_TAREFAS_CONCLUIDAS, {
         speed: speed,
         progressValue: progressValue,
