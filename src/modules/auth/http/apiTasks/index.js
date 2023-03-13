@@ -7,7 +7,7 @@ if (localStorage.getItem("token")) {
 }
 
 const api = axios.create({
-  baseURL: "http://localhost:82/api/",
+  baseURL: "https://api.devirian.com.br/api/",
   headers: {
     Accept: "application/json",
     "Content-Type": "application/json",
