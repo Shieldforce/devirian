@@ -7,10 +7,14 @@ if (localStorage.getItem("token")) {
 }
 
 const api = axios.create({
-  baseURL: "https://api.devirian.com.br/api/",
+  baseURL: "http://localhost:82/api/",
   headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json",
+    //Accept: "application/json",
+    //"Access-Control-Allow-Origin" : "*/*",
+    //"Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
+    "Access-Control-Allow-Headers": "*",
     Authorization: `Bearer ${token}`,
   },
 });
