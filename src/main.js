@@ -9,18 +9,6 @@ import api from "@/modules/auth/http/apiTasks/index.js";
 
 Vue.config.productionTip = false;
 
-// Force HTTPS redirection
-router.use(function(req, res, next) {
-  if (
-    req.secure ||
-    req.headers["x-forwarded-proto"] === "https"
-  ) {
-    return next();
-  } else {
-    return res.redirect("https://" + req.headers.host + req.url);
-  }
-});
-
 router.beforeEach((to, from, next) => {
   if (
     localStorage.getItem("token") &&
