@@ -7,4 +7,7 @@ export default {
   [types.SET_TOKEN](state, payload) {
     state.token = payload;
   },
+  [types.SET_VERIFY_TOKEN](state, payload) {
+    state.verifyToken = payload;
+  },
 };

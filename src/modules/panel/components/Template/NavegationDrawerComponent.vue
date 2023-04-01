@@ -2,6 +2,7 @@
   <v-navigation-drawer
     v-model="drawer"
     app
+    dark
   >
     <v-list-item>
       <v-list-item-content>
@@ -52,6 +53,7 @@ export default {
       },
       { title: "Lista de Tarefas", icon: "mdi-list-status", to: "/tasks" },
       { title: "Sobre", icon: "mdi-information-outline", to: "/about" },
+      { title: "Chat", icon: "mdi-chat", to: "/chat" },
     ],
     right: null,
   }),

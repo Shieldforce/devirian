@@ -14,7 +14,7 @@
             style="
               border-radius: 5px;
               text-align: center;
-              color: #6495ed;
+              color: #cecece;
               background-color: rgba(0, 0, 0, 0.3);
             "
           >
@@ -49,6 +49,6 @@ export default {
   },
   data() {
     return {};
-  }
+  },
 };
 </script>

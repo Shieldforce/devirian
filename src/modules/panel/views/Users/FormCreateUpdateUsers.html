@@ -1,0 +1,59 @@
+<v-card-text>
+  <div style="padding: 5%">
+    <v-row>
+      <v-col
+        cols="12"
+        sm="12"
+        md="12"
+      >
+        <v-btn icon>
+          <v-avatar
+            width="50px"
+            height="50px"
+            @click="changePicture()"
+          >
+            <img
+              :src="
+              this.authUser.picture
+                ? this.authUser.picture
+                : 'https://i.pravatar.cc/64'
+            "
+            />
+          </v-avatar>
+        </v-btn>
+      </v-col>
+
+      <v-col
+        cols="12"
+        sm="12"
+        md="12"
+      >
+        <v-text-field
+          @keydown.stop="resetValidation('name')"
+          label="Nome Completo*"
+          v-model="$store.state.global.dataForm.form.name"
+          :rules="[ ...$store.state.global.dataForm.validation.name ?? [] ]"
+          required
+        ></v-text-field>
+      </v-col>
+
+      <v-col
+        cols="12"
+        sm="12"
+        md="12"
+      >
+        <v-file-input
+          ref="picture"
+          accept="image/png, image/jpeg, image/bmp"
+          placeholder="Escolha o avatar"
+          prepend-icon="mdi-camera"
+          @change="changePicture"
+          label="Avatar"
+          v-model="picture"
+        >
+        </v-file-input>
+      </v-col>
+    </v-row>
+  </div>
+  <small>Campos com * são obrigatórios!</small>
+</v-card-text>

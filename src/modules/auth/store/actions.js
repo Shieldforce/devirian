@@ -20,3 +20,7 @@ export const ActionSetUser = ({ commit }, payload) => {
 export const ActionSetToken = ({ commit }, payload) => {
   commit(types.SET_TOKEN, payload);
 };
+
+export const ActionSetVerifyToken = ({ commit }, payload) => {
+  commit(types.SET_VERIFY_TOKEN, payload);
+};

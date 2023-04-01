@@ -105,7 +105,7 @@ export const ActionGetTarefas = ({ commit }, payload) => {
         concluida = parseInt(concluida + data.concluida);
       });
       var media = concluida / parseInt(items.length);
-      if(items.length===0) {
+      if (items.length === 0) {
         media = 100;
       }
       var progressColor = "rgba(0,0,0, 0.3)";
@@ -160,7 +160,7 @@ export const ActionGetTarefas = ({ commit }, payload) => {
       }
       var progressValue = speed * 10;
       commit(types.GET_TAREFAS, response.data.data);
-      if(media===100) {
+      if (media === 100) {
         speed = 1;
       }
       commit(types.GET_TAREFAS_CONCLUIDAS, {
@@ -173,4 +173,26 @@ export const ActionGetTarefas = ({ commit }, payload) => {
       console.log(error);
     });
   return tarefas;
+};
+
+export const ActionGetChat = ({commit}, payload) => {
+  apiTasks.get("/chat", payload).then(res => {
+    commit(types.GET_CHAT, res.data.data);
+  });
+};
+
+export const ActionCreateChat = (context, payload) => {
+  return apiTasks.post("/chat", payload);
+};
+
+export const ActionUpdateChat = (context, payload) => {
+  return apiTasks.put(`/chat/${payload.id}`, payload);
+};
+
+export const ActionDeleteChat = (context, payload) => {
+  return apiTasks.delete(`/chat/${payload.id}`, payload);
+};
+
+export const ActionShowChat = (context, payload) => {
+  return apiTasks.get(`/chat/${payload.id}`, payload);
 };

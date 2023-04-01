@@ -35,6 +35,18 @@ const routes = [
         /* webpackChunkName: "about" */ "@/modules/panel/views/AboutView.vue"
       ),
   },
+  {
+    path: "/chat",
+    name: "chat",
+    meta: {
+      scope: "private",
+      reload: true,
+    },
+    component: () =>
+      import(
+        /* webpackChunkName: "chat" */ "@/modules/panel/views/ChatView.vue"
+      ),
+  },
 ];
 
 export default routes;

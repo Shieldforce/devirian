@@ -28,7 +28,15 @@
     </v-btn>
 
     <v-btn icon>
-      <v-icon>mdi-heart</v-icon>
+      <v-avatar width="25px" height="25px" @click="changePicture()">
+        <img
+          :src="
+            this.authUser.picture
+              ? this.authUser.picture
+              : 'https://i.pravatar.cc/64'
+          "
+        />
+      </v-avatar>
     </v-btn>
 
     <v-btn icon>
@@ -39,11 +47,22 @@
 
 <script>
 import apiTasks from "@/modules/auth/http/apiTasks/index";
+import { mapActions } from "vuex";
+
 export default {
   data: () => ({
     right: null,
+    authUser: {},
   }),
+  mounted() {
+    
+  },
   methods: {
+    ...mapActions("auth", ["ActionSetUser"]),
+    ...mapActions("global", [
+      "ActionSetModalCreateUpdate",
+      "ActionSetModalDataForm",
+    ]),
     changeDrawer() {
       this.$emit("changeDrawer");
     },
@@ -61,6 +80,28 @@ export default {
           window.location.href = "/access";
         });
     },
+    changePicture() {
+      var payload = {
+        endpoint: `/user/savePicture`,
+        method: "post",
+        form: this.authUser,
+        validation: {},
+      };
+      this.ActionSetModalDataForm(payload);
+      this.ActionSetModalCreateUpdate({
+        dialog: true,
+        title: `Edição de Usuário: ${this.authUser.name}`,
+        selectionTemplate: "FormCreateUpdateUsers",
+      });
+    }
   },
+  watch: {
+    "$store.state.auth.user" : {
+      immediate: true,
+      handler() {
+        this.authUser = this.$store.state.auth.user;
+      },
+    }
+  }
 };
 </script>

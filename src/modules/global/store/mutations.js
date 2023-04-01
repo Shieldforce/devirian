@@ -28,4 +28,8 @@ export default {
   [types.GET_TAREFAS_CONCLUIDAS](state, payload) {
     state.tarefasConcluidas = payload;
   },
+
+  [types.GET_CHAT](state, payload) {
+    state.chat = payload;
+  }
 };

@@ -21,10 +21,10 @@
             min-height="200"
           >
             Olá, meu nome é "Sr. coelho", sou um mestre jedi, estou a procura da
-            minha paz interior. Mas, nas horas vagas sou uma pessoa normal, rss, e tenho que
-            finalizar minhas metas, então, por favor me ajuda com isso, quanto
-            mais metas acumuladas, mais difícil fica a minha concentração e
-            meditação!
+            minha paz interior. Mas, nas horas vagas sou uma pessoa normal, rss,
+            e tenho que finalizar minhas metas, então, por favor me ajuda com
+            isso, quanto mais metas acumuladas, mais difícil fica a minha
+            concentração e meditação!
 
             <hr class="mt-2" />
             <v-progress-linear

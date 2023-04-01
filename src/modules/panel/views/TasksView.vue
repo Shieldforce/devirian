@@ -28,10 +28,10 @@
               dividir a grana que irei receber pelos jobs!
             </div>
             <div v-show="!hiddenFlow">
-              E ai pessoal, curtir folga é muito bom, mas se vocês precisarem de mim 
-              só chamar ou criar uma tarefa, que já chega a notificação aqui no meu email.
-              Claro que eu vou cobrar uma graninha né, nem relógio trabalha de graça, kkkkk.
-              Bom deixa eu ficar de boa aqui, vlw.
+              E ai pessoal, curtir folga é muito bom, mas se vocês precisarem de
+              mim só chamar ou criar uma tarefa, que já chega a notificação aqui
+              no meu email. Claro que eu vou cobrar uma graninha né, nem relógio
+              trabalha de graça, kkkkk. Bom deixa eu ficar de boa aqui, vlw.
             </div>
 
             <hr class="mt-2" />

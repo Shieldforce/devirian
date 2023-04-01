@@ -65,7 +65,9 @@
 
             <v-text-field
               @keydown.stop="resetValidation"
-              type="password"
+              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+              :type="show1 ? 'text' : 'password'"
+              @click:append="show1 = !show1"
               v-if="!resetPassword"
               v-model="form.password"
               :rules="[
@@ -78,7 +80,9 @@
 
             <v-text-field
               @keydown.stop="resetValidation"
-              type="password"
+              :append-icon="show1 ? 'mdi-eye' : 'mdi-eye-off'"
+              :type="show1 ? 'text' : 'password'"
+              @click:append="show1 = !show1"
               v-if="register && !resetPassword"
               v-model="form.password_confirmation"
               :rules="[
@@ -138,6 +142,7 @@ import { mapActions } from "vuex";
 export default {
   name: "AccessView",
   data: () => ({
+    show1: false,
     register: false,
     resetPassword: false,
     emailSend: false,

@@ -41,21 +41,22 @@
             >
               <div>
                 <h1>Sr. Coelho</h1>
-                <hr class="mb-5">
+                <hr class="mb-5" />
                 <p>
-                   - É uma especie de gurú de metas, com sua imensa
-                  sabedoria, ajuda pessoas a realizarem a paz interior.
+                  - É uma especie de gurú de metas, com sua imensa sabedoria,
+                  ajuda pessoas a realizarem a paz interior.
                 </p>
                 <p>
-                  - Sr. Coelho nasceu no planeta Coelhândia, em uma cidadezinha chamada Coelhuzeudes.
+                  - Sr. Coelho nasceu no planeta Coelhândia, em uma cidadezinha
+                  chamada Coelhuzeudes.
                 </p>
                 <p>
-                   - Ele é mestre em realizar metas e manter a sua paz interior.
-                   Com tudo, precisa de uma pequena ajuda as vezes.
+                  - Ele é mestre em realizar metas e manter a sua paz interior.
+                  Com tudo, precisa de uma pequena ajuda as vezes.
                 </p>
                 <p>
-                   - Para manter o equilibrio de sua paz interior, procure seguir e realizar metas.
-                   Isso é ensinamento para toda vida!
+                  - Para manter o equilibrio de sua paz interior, procure seguir
+                  e realizar metas. Isso é ensinamento para toda vida!
                 </p>
               </div>
             </v-alert>
@@ -72,13 +73,13 @@
             style="padding-top: 20%"
           >
             <Programming2AnimateComponent
-            :changeSpeed="changeSpeed"
-            :changePlay="changePlay"
-            :changePause="changePause"
-            :changeStop="changeStop"
-            :changeHeight="changeHeight"
-            :changeWidth="changeWidth"
-          />
+              :changeSpeed="changeSpeed"
+              :changePlay="changePlay"
+              :changePause="changePause"
+              :changeStop="changeStop"
+              :changeHeight="changeHeight"
+              :changeWidth="changeWidth"
+            />
           </v-col>
           <v-col
             cols="7"
@@ -96,13 +97,15 @@
             >
               <div>
                 <h1>Alfredo (Tabalhando)</h1>
-                <hr class="mb-5">
+                <hr class="mb-5" />
                 <p>
-                  - Trabalhador e dedicado, ele sempre consegue terminar seus jobs.
-                  Com isso ganha experiência e habilidades impressionantes.
+                  - Trabalhador e dedicado, ele sempre consegue terminar seus
+                  jobs. Com isso ganha experiência e habilidades
+                  impressionantes.
                 </p>
                 <p>
-                  - Alfredo nasceu no Brasil/ES, em uma cidadezinha chamada Guarapari.
+                  - Alfredo nasceu no Brasil/ES, em uma cidadezinha chamada
+                  Guarapari.
                 </p>
               </div>
             </v-alert>
@@ -119,13 +122,13 @@
             style="padding-top: 20%"
           >
             <Vacation1AnimateComponent
-            :changeSpeed="changeSpeed"
-            :changePlay="changePlay"
-            :changePause="changePause"
-            :changeStop="changeStop"
-            :changeHeight="changeHeight"
-            :changeWidth="changeWidth"
-          />
+              :changeSpeed="changeSpeed"
+              :changePlay="changePlay"
+              :changePause="changePause"
+              :changeStop="changeStop"
+              :changeHeight="changeHeight"
+              :changeWidth="changeWidth"
+            />
           </v-col>
           <v-col
             cols="7"
@@ -143,10 +146,10 @@
             >
               <div>
                 <h1>Alfredo (De folga)</h1>
-                <hr class="mb-5">
+                <hr class="mb-5" />
                 <p>
-                  O que Alfredo mais gosta é de folga, ele até divide sua grana dos jobs 
-                  para poder ficar de boa em uma praia.
+                  O que Alfredo mais gosta é de folga, ele até divide sua grana
+                  dos jobs para poder ficar de boa em uma praia.
                 </p>
               </div>
             </v-alert>
@@ -161,7 +164,6 @@
 import RabbitAnimateComponent from "@/modules/global/components/RabbitAnimateComponent.vue";
 import Programming2AnimateComponent from "@/modules/global/components/Programming2AnimateComponent.vue";
 import Vacation1AnimateComponent from "@/modules/global/components/Vacation1AnimateComponent.vue";
-
 
 export default {
   name: "AboutView",
