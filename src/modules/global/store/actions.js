@@ -181,8 +181,12 @@ export const ActionGetChat = ({commit}, payload) => {
   });
 };
 
-export const ActionCreateChat = (context, payload) => {
-  return apiTasks.post("/chat", payload);
+export const ActionCreateChat = ({commit}, payload) => {
+  var post = apiTasks.post("/chat", payload);
+  apiTasks.get("/chat", payload).then(res => {
+    commit(types.GET_CHAT, res.data.data);
+  });
+  return post;
 };
 
 export const ActionUpdateChat = (context, payload) => {
