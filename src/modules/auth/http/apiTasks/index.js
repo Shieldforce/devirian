@@ -13,6 +13,7 @@ const api = axios.create({
     "Access-Control-Allow-Origin": "*",
     "Access-Control-Allow-Methods": "GET, POST, PATCH, PUT, DELETE, OPTIONS",
     "Access-Control-Allow-Headers": "*",
+    "Content-Security-Policy-Report-Only": "*",
     Authorization: `Bearer ${token}`,
   },
 });
