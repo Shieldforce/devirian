@@ -77,7 +77,6 @@
 
 <script>
 import MainDashboardImg from "@/modules/global/components/MainDashboardImg.vue";
-//import ApiTasks from "@/modules/auth/http/apiTasks/index.js";
 import { mapActions } from "vuex";
 import moment from "moment";
 
@@ -164,7 +163,7 @@ export default {
         var newChat = [].map.call(chat, function (obj) {
           var left = false;
           var right = true;
-          if (user.id === obj.user_id) {
+          if (user.id == obj.user_id) {
             left = true;
             right = false;
           }
