@@ -150,13 +150,12 @@ export default {
       this.ws.connnection.send(object);
 
       this.ActionGetChat();
-      this.messages = this.$store.state.global.chat;
       this.mensagem = "";
     },
   },
   watch: {
     "$store.state.global.chat": {
-      immediate: true,
+      //immediate: true,
       handler() {
         var chat = this.$store.state.global.chat;
         var user = this.authUser;
