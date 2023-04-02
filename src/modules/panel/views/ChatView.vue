@@ -149,8 +149,9 @@ export default {
       });
       this.ws.connnection.send(object);
 
-      this.mensagem = "";
       this.ActionGetChat();
+      this.messages = this.$store.state.global.chat;
+      this.mensagem = "";
     },
   },
   watch: {
