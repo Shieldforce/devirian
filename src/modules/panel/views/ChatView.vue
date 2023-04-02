@@ -105,7 +105,7 @@ export default {
     };
   },
   created() {
-    this.ws.connnection = new WebSocket("wss://35.215.227.4:9999");
+    this.ws.connnection = new WebSocket("ws://localhost:9999/");
     this.ws.connnection.onopen = (event) => {
       if (event) {
         this.wsOpen = true;
