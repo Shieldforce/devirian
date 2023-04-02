@@ -180,10 +180,12 @@ export default {
     },
     otheMessage() {
       this.authUser = this.$store.state.auth.user;
+      this.ActionGetChat();
     },
     "$store.state.auth.user": {immediate: true,
       handler() {
         this.authUser = this.$store.state.auth.user;
+      this.ActionGetChat();
       },
     },
   },
