@@ -115,6 +115,7 @@ export default {
       console.log(message);
       console.clear();
     };
+    this.authUser = this.$store.state.auth.user;
   },
   mounted() {
     this.authUser = this.$store.state.auth.user;
