@@ -163,6 +163,7 @@ export default {
         var newChat = [].map.call(chat, function (obj) {
           var left = false;
           var right = true;
+          console.log(user.id, obj.user_id);
           if (user.id == obj.user_id) {
             left = true;
             right = false;
