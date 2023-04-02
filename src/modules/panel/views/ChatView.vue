@@ -115,10 +115,8 @@ export default {
       console.log(message);
       console.clear();
     };
-    this.authUser = this.$store.state.auth.user;
   },
   mounted() {
-    this.authUser = this.$store.state.auth.user;
     this.ActionGetChat();
   },
   destroyed() {
@@ -183,6 +181,11 @@ export default {
     },
     otheMessage() {
       // toda vez que chega mensagem do WS
+    },
+    "$store.state.auth.user": {immediate: true,
+      handler() {
+        this.authUser = this.$store.state.auth.user;
+      },
     },
   },
 };
