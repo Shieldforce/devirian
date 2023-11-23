@@ -3,8 +3,10 @@ module.exports = defineConfig({
   devServer: {
     allowedHosts: "all",
     client: {
-      webSocketURL: "ws://35.215.227.4:9999",
+      webSocketURL: "ws://85.31.230.36:9999",
     },
+    compress: true,
+    disableHostCheck: true,
   },
   transpileDependencies: ["vuetify"],
 });
