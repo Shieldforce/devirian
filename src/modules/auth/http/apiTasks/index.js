@@ -5,8 +5,8 @@ let token = null;
 if (localStorage.getItem("token")) {
   token = localStorage.getItem("token");
 }
-//const apiUrl = "http://localhost:8089/api/";
-const apiUrl = "https://api.devirian.com.br/api/";
+const apiUrl = "http://localhost:8089/api/";
+//const apiUrl = "https://api.devirian.com.br/api/";
 const api = axios.create({
   baseURL: apiUrl,
   headers: {
