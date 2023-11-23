@@ -2,7 +2,6 @@
   "name": "devirian",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://localhost:8080",
   "scripts": {
     "dev": "prettier --write ./src && vue-cli-service serve --mode development",
     "local": "prettier --write ./src && vue-cli-service serve --mode local",
