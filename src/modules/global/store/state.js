@@ -19,5 +19,5 @@ export default {
   metasConcluidas: {},
   tarefas: {},
   tarefasConcluidas: {},
-  chat: {}
+  chat: {},
 };

@@ -115,7 +115,9 @@ export default {
       console.log(message);
       console.clear();
     };
-    setInterval(() => { this.ActionGetChat(); }, 60000);
+    setInterval(() => {
+      this.ActionGetChat();
+    }, 60000);
   },
   mounted() {
     this.ActionGetChat();
@@ -183,10 +185,11 @@ export default {
       this.authUser = this.$store.state.auth.user;
       this.ActionGetChat();
     },
-    "$store.state.auth.user": {immediate: true,
+    "$store.state.auth.user": {
+      immediate: true,
       handler() {
         this.authUser = this.$store.state.auth.user;
-      this.ActionGetChat();
+        this.ActionGetChat();
       },
     },
   },

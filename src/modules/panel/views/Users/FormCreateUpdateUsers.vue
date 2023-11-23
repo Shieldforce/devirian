@@ -24,9 +24,9 @@ export default {
         this.authUser.picture = e.target.result;
         var file = this.picture;
         let formData = new FormData();
-        formData.append('picture', file);
-        formData.append('id', this.authUser.id);
-        formData.append('name', this.authUser.name);
+        formData.append("picture", file);
+        formData.append("id", this.authUser.id);
+        formData.append("name", this.authUser.name);
         var payload = {
           endpoint: `/user/savePicture`,
           method: "post",

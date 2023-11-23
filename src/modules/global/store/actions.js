@@ -175,15 +175,15 @@ export const ActionGetTarefas = ({ commit }, payload) => {
   return tarefas;
 };
 
-export const ActionGetChat = ({commit}, payload) => {
-  apiTasks.get("/chat", payload).then(res => {
+export const ActionGetChat = ({ commit }, payload) => {
+  apiTasks.get("/chat", payload).then((res) => {
     commit(types.GET_CHAT, res.data.data);
   });
 };
 
-export const ActionCreateChat = ({commit}, payload) => {
+export const ActionCreateChat = ({ commit }, payload) => {
   var post = apiTasks.post("/chat", payload);
-  apiTasks.get("/chat", payload).then(res => {
+  apiTasks.get("/chat", payload).then((res) => {
     commit(types.GET_CHAT, res.data.data);
   });
   return post;

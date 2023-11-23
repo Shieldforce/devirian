@@ -28,7 +28,11 @@
     </v-btn>
 
     <v-btn icon>
-      <v-avatar width="25px" height="25px" @click="changePicture()">
+      <v-avatar
+        width="25px"
+        height="25px"
+        @click="changePicture()"
+      >
         <img
           :src="
             this.authUser.picture
@@ -54,9 +58,7 @@ export default {
     right: null,
     authUser: {},
   }),
-  mounted() {
-    
-  },
+  mounted() {},
   methods: {
     ...mapActions("auth", ["ActionSetUser"]),
     ...mapActions("global", [
@@ -93,15 +95,15 @@ export default {
         title: `Edição de Usuário: ${this.authUser.name}`,
         selectionTemplate: "FormCreateUpdateUsers",
       });
-    }
+    },
   },
   watch: {
-    "$store.state.auth.user" : {
+    "$store.state.auth.user": {
       immediate: true,
       handler() {
         this.authUser = this.$store.state.auth.user;
       },
-    }
-  }
+    },
+  },
 };
 </script>

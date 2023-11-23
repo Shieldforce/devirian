@@ -85,7 +85,7 @@ export default {
 /* Works on Firefox */
 * {
   scrollbar-width: thin;
-  scrollbar-color: rgba(0,0,0,0.3) rgba(4, 91, 117, 0.5);
+  scrollbar-color: rgba(0, 0, 0, 0.3) rgba(4, 91, 117, 0.5);
 }
 
 /* Works on Chrome, Edge, and Safari */
@@ -94,12 +94,12 @@ export default {
 }
 
 *::-webkit-scrollbar-track {
-  background: rgba(0,0,0,0.3);
+  background: rgba(0, 0, 0, 0.3);
 }
 
 *::-webkit-scrollbar-thumb {
   background-color: rgba(4, 91, 117, 0.5);
   border-radius: 20px;
-  border: 3px solid rgba(0,0,0,0.3);
+  border: 3px solid rgba(0, 0, 0, 0.3);
 }
 </style>

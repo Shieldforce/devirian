@@ -31,5 +31,5 @@ export default {
 
   [types.GET_CHAT](state, payload) {
     state.chat = payload;
-  }
+  },
 };

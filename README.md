@@ -1,5 +1,10 @@
 # devirian
 
+## Start Container
+```
+docker-compose up -d
+```
+
 ## Project setup
 ```
 yarn install
